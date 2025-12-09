@@ -1,0 +1,145 @@
+name: "shopsystem"
+
+displayName: "Shop System"
+
+author: "[#00D4FF[]]SamielXD[[]]"
+
+description:
+  '''
+[accent[]]ShopSystemMod v1.1 - Your Personal In-Game Economy![[]]
+
+[white[]]Hey there! Ever wanted to buy resources mid-game or reward yourself for surviving tough waves? This mod adds a complete coin-based shop system to Mindustry. Think of it as your personal marketplace that grows with you as you play![[]]
+
+[yellow[]]⚠️ Heads Up: This is an updated release! You might run into some bugs or weird behavior. If something breaks, just let me know. The save system should keep your coins safe though![[]]
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[lime[]]💰 What's This All About?[[]]
+
+Basically, you earn coins by playing the game normally - killing enemies, completing waves, that sort of thing. Then you can spend those coins in the shop to buy resources, spawn units, or use special abilities. The more you play, the more stuff unlocks!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]🛒 The Shop Has:[[]]
+
+[white[]]Resources[[]] → Copper, Lead, Coal, Titanium, and Thorium
+[white[]]Units[[]] → Instant Flare, Dagger, and Mace squads when you need backup
+[white[]]Boosts[[]] → Skip annoying waves or heal all your buildings at once
+[white[]]Special Items[[]] → Buy more coins (yeah, it's meta) or spawn a whole army
+[white[]]Pets[[]] → Cute little guys that earn coins for you while you play
+
+Each item is locked at first. You'll unlock new stuff as you complete waves and level up your shop. It keeps things interesting!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[gold[]]⭐ VIP System (Because You're Special)[[]]
+
+The more you spend, the more VIP EXP you get. Level up your VIP status and you'll earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything. Pretty sweet deal!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[lime[]]🎮 How Do I Use This Thing?[[]]
+
+Super simple:
+1. Open your Settings menu (that gear icon)
+2. Scroll until you see "Shop System"
+3. Hit the "Open Shop" button
+4. Buy whatever you want!
+
+Your coins are shown in the top-left corner while playing. The shop button lives in settings to keep your screen clean.
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]📈 Ways to Earn Coins:[[]]
+
+[white[]]Playing the game:[[]]
+  • Each enemy killed = 1 coin (multiplied by your VIP level)
+  • Each wave completed = 5 coins (also multiplied)
+
+[white[]]Daily stuff:[[]]
+  • Daily Quests → Easy tasks like "kill 30 enemies" for 15-25 coins
+  • Daily Work → Pick a job (wave defense, hunting, building) for 30-50 coins
+  • Daily Login → Just log in each day for rewards up to 150 coins!
+
+[white[]]Long-term:[[]]
+  • Achievements → Big milestones that give 50-100 coins
+  • Pets → They earn 2-15 coins per minute automatically
+
+[white[]]Secret stuff:[[]]
+  • Flash Sales → Random discounts pop up (up to 50% off!)
+  • Redeem Codes → I hid some codes around... find them for free coins!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[yellow[]]🐾 About Those Pets...[[]]
+
+Pets are basically passive income generators. Buy one, and it'll earn coins for you every minute - even when you're not doing anything! There are 4 pets total:
+
+  [lime[]]Coin Cat[[]] → Your starter pet, earns 2/min (unlocks Wave 5)
+  [gold[]]Gold Dog[[]] → The reliable choice, 4/min (unlocks Wave 10)
+  [cyan[]]Diamond Bird[[]] → Getting fancy, 8/min (unlocks Wave 15)
+  [red[]]Mega Dragon[[]] → The ultimate earner, 15/min (unlocks Wave 25)
+
+They're expensive but worth it in the long run!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[white[]]🔒 The Lock System (Important!)[[]]
+
+Not everything is available from the start. Items unlock based on:
+  • How many waves you've completed
+  • Your shop level (which increases as you spend coins)
+
+When you see a locked item, it'll show you exactly what you need to unlock it. Like "🔒 Wave 5 & Shop Lvl 1". This prevents you from getting overwhelmed at the start and gives you goals to work toward.
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]💡 Some Tips From Testing:[[]]
+
+• Do your daily quests! They're the easiest way to get coins early on
+• Daily work can only be done once per day, so pick wisely
+• Don't forget to claim your daily login reward
+• Save up for pets if you're playing long sessions
+• Some items have cooldowns - the shop will show you when
+• Flash sales happen randomly, so check back often
+• Your progress auto-saves every 30 seconds
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[red[]]⚠️ Known Issues:[[]]
+
+• Occasionally the work system might not track progress (just cancel and restart)
+• If you spam-click items super fast, weird things can happen
+• The UI might look weird on very small screens
+• Some achievements might not trigger immediately (give it a sec)
+
+Nothing game-breaking, but if you find something broken, hit me up!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[lime[]]📊 Current Content (v1.1):[[]]
+
+5 Resources • 3 Units • 2 Boosts • 2 Special Items • 4 Pets
+3 Daily Quests • 3 Work Activities • 10 Login Rewards • 3 Achievements
+13+ Redeem Codes • Flash Sales System • VIP Levels 1-5
+
+[yellow[]]More stuff coming in future updates! This is just the foundation.[[]]
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[white[]]That's about it! The shop should be pretty intuitive once you open it. If you get stuck or confused, everything's labeled and the locked items tell you what you need.[[]]
+
+[gray[]]Have fun, Hope you enjoy my mod! 💰[[]]
+
+[white[]]- SamielXD[[]]
+  '''
+
+version: "1.1"
+
+minGameVersion: 147
+
+dependencies: []
+
+main: "scripts/main.js"
+
+repo: "SamielXD/ShopSystemMod"

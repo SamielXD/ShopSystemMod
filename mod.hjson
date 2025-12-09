@@ -6,11 +6,11 @@ author: "[#00D4FF[]]SamielXD[[]]"
 
 description:
   '''
-[accent[]]ShopSystemMod v1.0 - Your Personal In-Game Economy![[]]
+[accent[]]ShopSystemMod v1.1 - Your Personal In-Game Economy![[]]
 
 [white[]]Hey there! Ever wanted to buy resources mid-game or reward yourself for surviving tough waves? This mod adds a complete coin-based shop system to Mindustry. Think of it as your personal marketplace that grows with you as you play![[]]
 
-[yellow[]]⚠️ Heads Up: This is the first public release! You might run into some bugs or weird behavior. If something breaks, just let me know. The save system should keep your coins safe though![[]]
+[yellow[]]⚠️ Heads Up: This is an updated release! You might run into some bugs or weird behavior. If something breaks, just let me know. The save system should keep your coins safe though![[]]
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -22,8 +22,8 @@ Basically, you earn coins by playing the game normally - killing enemies, comple
 
 [cyan[]]🛒 The Shop Has:[[]]
 
-[white[]]Resources[[]] → Copper and Lead (because let's be honest, you always run out)
-[white[]]Units[[]] → Instant Flare and Dagger squads when you need backup
+[white[]]Resources[[]] → Copper, Lead, Coal, Titanium, and Thorium
+[white[]]Units[[]] → Instant Flare, Dagger, and Mace squads when you need backup
 [white[]]Boosts[[]] → Skip annoying waves or heal all your buildings at once
 [white[]]Special Items[[]] → Buy more coins (yeah, it's meta) or spawn a whole army
 [white[]]Pets[[]] → Cute little guys that earn coins for you while you play
@@ -117,9 +117,9 @@ Nothing game-breaking, but if you find something broken, hit me up!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[lime[]]📊 Current Content (v1.0):[[]]
+[lime[]]📊 Current Content (v1.1):[[]]
 
-2 Resources • 2 Units • 2 Boosts • 2 Special Items • 4 Pets
+5 Resources • 3 Units • 2 Boosts • 2 Special Items • 4 Pets
 3 Daily Quests • 3 Work Activities • 10 Login Rewards • 3 Achievements
 13+ Redeem Codes • Flash Sales System • VIP Levels 1-5
 
@@ -134,9 +134,9 @@ Nothing game-breaking, but if you find something broken, hit me up!
 [white[]]- SamielXD[[]]
   '''
 
-version: "1.0"
+version: "1.1"
 
-minGameVersion: 153
+minGameVersion: 147
 
 dependencies: []
 

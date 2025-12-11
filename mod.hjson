@@ -6,11 +6,42 @@ author: "[#00D4FF[]]SamielXD[[]]"
 
 description:
   '''
-[accent[]]ShopSystemMod v1.1 - Your Personal In-Game Economy![[]]
+[accent[]]ShopSystemMod v1.2 - Your Personal In-Game Economy![[]]
 
 [white[]]Hey there! Ever wanted to buy resources mid-game or reward yourself for surviving tough waves? This mod adds a complete coin-based shop system to Mindustry. Think of it as your personal marketplace that grows with you as you play![[]]
 
 [yellow[]]⚠️ Heads Up: This is an updated release! You might run into some bugs or weird behavior. If something breaks, just let me know. The save system should keep your coins safe though![[]]
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[gold[]]📋 CHANGELOG - What's New in v1.2:[[]]
+
+[lime[]]✨ New Features:[[]]
+  • Custom Sound Effects! Now with satisfying audio feedback
+  • Better UI positioning - Shop button moved to HUD
+  • Improved button click sounds throughout the shop
+  • Enhanced purchase feedback with audio cues
+  • 3 New Pets added to the collection!
+
+[cyan[]]🔊 Sound Effects Added:[[]]
+  • pop.ogg - UI clicks and interactions
+  • switch.ogg - Menu transitions and level ups
+  • coins.ogg - Earning and spending coins
+
+[white[]]🐾 Pet Updates:[[]]
+  • Renamed "Coin Cat" to "Cat"
+  • Renamed "Gold Dog" to "Dog"
+  • Renamed "Diamond Bird" to "Bird"
+  • Renamed "Mega Dragon" to "Dragon"
+  • Added "Fox" - 25 coins/min passive earner
+  • Added "Wolf" - 40 coins/min pack hunter
+  • Added "Loyal Protector" - 70 coins/min ultimate companion
+
+[white[]]🔧 Improvements:[[]]
+  • Cleaner UI layout and positioning
+  • Better sound feedback for all actions
+  • Smoother menu transitions
+  • More satisfying purchase experience
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -25,28 +56,29 @@ Basically, you earn coins by playing the game normally - killing enemies, comple
 [white[]]Resources[[]] → Copper, Lead, Coal, Titanium, and Thorium
 [white[]]Units[[]] → Instant Flare, Dagger, and Mace squads when you need backup
 [white[]]Boosts[[]] → Skip annoying waves or heal all your buildings at once
-[white[]]Special Items[[]] → Buy more coins (yeah, it's meta) or spawn a whole army
 [white[]]Pets[[]] → Cute little guys that earn coins for you while you play
+[white[]]Auction House[[]] → Bid on exclusive items like Plastanium, Phase Fabric, and Surge Alloy
+[white[]]Favorites[[]] → Star your favorite items for quick access
 
 Each item is locked at first. You'll unlock new stuff as you complete waves and level up your shop. It keeps things interesting!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[gold[]]⭐ VIP System (Because You're Special)[[]]
+[gold[]]⭐ VIP System[[]]
 
-The more you spend, the more VIP EXP you get. Level up your VIP status and you'll earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything. Pretty sweet deal!
+The more you spend, the more VIP EXP you get. Level up your VIP status and you'll earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything. Pretty solid benefits!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [lime[]]🎮 How Do I Use This Thing?[[]]
 
 Super simple:
-1. Open your Settings menu (that gear icon)
-2. Scroll until you see "Shop System"
-3. Hit the "Open Shop" button
-4. Buy whatever you want!
+1. Click the "SHOP" button on the right side of your screen
+2. Browse categories and buy whatever you want!
+3. Check out Stats, Rewards, and Redeem Codes
+4. Listen for satisfying sound effects when you interact!
 
-Your coins are shown in the top-left corner while playing. The shop button lives in settings to keep your screen clean.
+Your coins are shown in the UI along with your VIP level and Shop level.
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -63,7 +95,8 @@ Your coins are shown in the top-left corner while playing. The shop button lives
 
 [white[]]Long-term:[[]]
   • Achievements → Big milestones that give 50-100 coins
-  • Pets → They earn 2-15 coins per minute automatically
+  • Pets → They earn 2-70 coins per minute automatically
+  • Auction House → Bid smart and win exclusive items!
 
 [white[]]Secret stuff:[[]]
   • Flash Sales → Random discounts pop up (up to 50% off!)
@@ -71,16 +104,30 @@ Your coins are shown in the top-left corner while playing. The shop button lives
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[yellow[]]🐾 About Those Pets...[[]]
+[yellow[]]🐾 Pet System - All 7 Companions:[[]]
 
-Pets are basically passive income generators. Buy one, and it'll earn coins for you every minute - even when you're not doing anything! There are 4 pets total:
+Pets are basically passive income generators. Buy one, and it'll earn coins for you every minute - even when you're not doing anything! We've expanded the pet roster and renamed them for simplicity:
 
-  [lime[]]Coin Cat[[]] → Your starter pet, earns 2/min (unlocks Wave 5)
-  [gold[]]Gold Dog[[]] → The reliable choice, 4/min (unlocks Wave 10)
-  [cyan[]]Diamond Bird[[]] → Getting fancy, 8/min (unlocks Wave 15)
-  [red[]]Mega Dragon[[]] → The ultimate earner, 15/min (unlocks Wave 25)
+  [white[]]Cat[[]] → Your starter pet, earns 2 coins/min (Wave 5 & Shop Lvl 1)
+  [white[]]Dog[[]] → The reliable choice, 4 coins/min (Wave 10 & Shop Lvl 2)
+  [white[]]Bird[[]] → Getting fancy, 8 coins/min (Wave 15 & Shop Lvl 3)
+  [white[]]Dragon[[]] → Strong earner, 15 coins/min (Wave 25 & Shop Lvl 5)
+  [white[]]Fox[[]] → Fast earner, 25 coins/min (Wave 35 & Shop Lvl 7)
+  [white[]]Wolf[[]] → Pack hunter, 40 coins/min (Wave 45 & Shop Lvl 9)
+  [white[]]Loyal Protector[[]] → The ultimate companion, 70 coins/min (Wave 60 & Shop Lvl 12)
 
-They're expensive but worth it in the long run!
+They're expensive but worth it in the long run! At max collection, you'll earn 164 coins per minute passively!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[gold[]]🏛️ Auction House[[]]
+
+The Auction House offers exclusive high-tier items you can't buy in the regular shop:
+  • Plastanium (50 units)
+  • Phase Fabric (30 units)
+  • Surge Alloy (20 units)
+
+You can either place bids and wait for the auction to end, or use "Buy Now" to get it instantly. Auctions run for 5 minutes and generate automatically!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -99,10 +146,15 @@ When you see a locked item, it'll show you exactly what you need to unlock it. L
 • Do your daily quests! They're the easiest way to get coins early on
 • Daily work can only be done once per day, so pick wisely
 • Don't forget to claim your daily login reward
-• Save up for pets if you're playing long sessions
+• Save up for pets if you're playing long sessions - they pay for themselves!
+• With all 7 pets, you earn 164 coins per minute passively
 • Some items have cooldowns - the shop will show you when
 • Flash sales happen randomly, so check back often
-• Your progress auto-saves every 30 seconds
+• Your progress auto-saves every 60 seconds
+• Star your favorite items for quick access!
+• Check the auction house regularly for exclusive items
+• Use bulk buying for resources to get bonus items!
+• Enjoy the new sound effects - they make shopping way more satisfying!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -112,18 +164,32 @@ When you see a locked item, it'll show you exactly what you need to unlock it. L
 • If you spam-click items super fast, weird things can happen
 • The UI might look weird on very small screens
 • Some achievements might not trigger immediately (give it a sec)
+• Sound effects require the sound files in your mod's sounds/ folder
 
 Nothing game-breaking, but if you find something broken, hit me up!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[lime[]]📊 Current Content (v1.1):[[]]
+[lime[]]📊 Current Content (v1.2):[[]]
 
-5 Resources • 3 Units • 2 Boosts • 2 Special Items • 4 Pets
+5 Resources • 3 Units • 2 Boosts • 7 Pets (3 NEW!) • 3 Auction Items
 3 Daily Quests • 3 Work Activities • 10 Login Rewards • 3 Achievements
 13+ Redeem Codes • Flash Sales System • VIP Levels 1-5
+Auction House • Favorites System • Bulk Buying with Bonuses
+Advanced Statistics Tracking • 3 Custom Sound Effects
 
 [yellow[]]More stuff coming in future updates! This is just the foundation.[[]]
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]🔊 Sound Files Needed:[[]]
+
+Make sure you have these sound files in your mod's sounds/ folder:
+  • pop.ogg - Button clicks and UI interactions
+  • switch.ogg - Menu switching and special events
+  • coins.ogg - Coin earning and spending sounds
+
+Without these files, the mod will still work but won't have sound effects!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
@@ -134,7 +200,7 @@ Nothing game-breaking, but if you find something broken, hit me up!
 [white[]]- SamielXD[[]]
   '''
 
-version: "1.1"
+version: "1.2"
 
 minGameVersion: 147
 

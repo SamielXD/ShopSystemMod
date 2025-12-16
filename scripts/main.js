@@ -1,5 +1,7 @@
-// ShopSystemMod v1.2
-var coins=0,coinLabel=null,shopLevelLabel=null,vipLabelUI=null,currentCategory="all",purchaseHistory=[],totalSpent=0,totalEarned=0,saleItems=[],MAX_SALE_ITEMS=4,saleEndTime=0,SALE_DURATION=600,currentShopDialog=null,currentContentTable=null,saleTimerLabel=null,dailyQuests=[],questProgress={},lastQuestReset=0,refundableItems=[],MAX_REFUND_HISTORY=3,loginStreak=0,lastLogin=0,achievementProgress={},REFUND_TIME_LIMIT=120,itemCooldowns={},favoriteItems=[],vipLevel=0,vipExp=0,itemLevels={},comboStreak=0,lastPurchaseTime=0,priceHistory={},notifications=[],coupons=[],shopReputation=0,shopLevel=1,dynamicPrices={},insuranceActive=false,ownedPets=[],petCoins=0,petLastCollect=0,redeemedCodes=[],workProgress=0,dailyWorkDone=false,lastWorkReset=0,settingsDialog=null,currentSettingsTab="stats",totalWavesCompleted=0,unlockedItems=[],activeCoupon=null,isRefreshing=false,saleUpdatePending=false,loginRewardClaimed=false,activeWorkListener=null,currentWorkActivity=null,totalKills=0,totalBuildings=0,mostPurchasedItem="",auctionItems=[],auctionEndTimes={},auctionBids={},auctionTimers={};
+// solo
+// ShopSystemMod v1.3
+
+var coins=0,coinLabel=null,shopLevelLabel=null,vipLabelUI=null,currentCategory="all",purchaseHistory=[],totalSpent=0,totalEarned=0,saleItems=[],MAX_SALE_ITEMS=4,saleEndTime=0,SALE_DURATION=600,currentShopDialog=null,currentContentTable=null,saleTimerLabel=null,dailyQuests=[],questProgress={},lastQuestReset=0,refundableItems=[],MAX_REFUND_HISTORY=3,loginStreak=0,lastLogin=0,achievementProgress={},REFUND_TIME_LIMIT=120,itemCooldowns={},favoriteItems=[],vipLevel=0,vipExp=0,itemLevels={},comboStreak=0,lastPurchaseTime=0,priceHistory={},notifications=[],coupons=[],shopReputation=0,shopLevel=1,dynamicPrices={},insuranceActive=false,ownedPets=[],petCoins=0,petLastCollect=0,redeemedCodes=[],workProgress=0,dailyWorkDone=false,lastWorkReset=0,settingsDialog=null,currentSettingsTab="stats",totalWavesCompleted=0,unlockedItems=[],activeCoupon=null,isRefreshing=false,saleUpdatePending=false,loginRewardClaimed=false,activeWorkListener=null,currentWorkActivity=null,totalKills=0,totalBuildings=0,mostPurchasedItem="",auctionItems=[],auctionEndTimes={},auctionBids={},auctionTimers={},currentPlanet="serpulo",petMissions=[],converterUnlocked=false,expeditions=[],bossWaveAvailable=true,prestigeLevel=0,prestigePoints=0,dailyChallenges=[],challengeProgress={},lastChallengeReset=0,milestoneRewards=[],craftingRecipes=[],ownedRecipes=[];
 
 var selectedQuantities={};
 
@@ -33,52 +35,128 @@ function playSound(soundName, volume, pitch) {
 const VIP_LEVELS=[{level:1,expNeeded:100,perks:"2x Coin",discount:5},{level:2,expNeeded:300,perks:"3x Coin",discount:10},{level:3,expNeeded:600,perks:"4x Coin",discount:15},{level:4,expNeeded:1000,perks:"5x Coin",discount:20},{level:5,expNeeded:1500,perks:"6x Coin",discount:25}];
 
 const PETS=[
-{name:"Cat",cost:800,earnRate:2,description:"2 coins/min",unlockWave:5,unlockShopLvl:1},
-{name:"Dog",cost:1500,earnRate:4,description:"4 coins/min",unlockWave:10,unlockShopLvl:2},
-{name:"Bird",cost:3000,earnRate:8,description:"8 coins/min",unlockWave:15,unlockShopLvl:3},
-{name:"Dragon",cost:7000,earnRate:15,description:"15 coins/min",unlockWave:25,unlockShopLvl:5},
-{name:"Fox",cost:12000,earnRate:25,description:"25 coins/min",unlockWave:35,unlockShopLvl:7},
-{name:"Wolf",cost:20000,earnRate:40,description:"40 coins/min",unlockWave:45,unlockShopLvl:9},
-{name:"Loyal Protector",cost:35000,earnRate:70,description:"70 coins/min",unlockWave:60,unlockShopLvl:12}
+{name:"Cat",cost:500,earnRate:2,description:"2 coins/min",unlockWave:3,unlockShopLvl:1,planet:"serpulo",evolution:"Lion"},
+{name:"Dog",cost:800,earnRate:3,description:"3 coins/min",unlockWave:5,unlockShopLvl:1,planet:"serpulo",evolution:"Wolf"},
+{name:"Eagle",cost:1500,earnRate:5,description:"5 coins/min",unlockWave:10,unlockShopLvl:2,planet:"serpulo",evolution:"Phoenix"},
+{name:"Fox",cost:3000,earnRate:8,description:"8 coins/min",unlockWave:15,unlockShopLvl:3,planet:"serpulo",evolution:"Kitsune"},
+{name:"Bear",cost:5000,earnRate:12,description:"12 coins/min",unlockWave:20,unlockShopLvl:4,planet:"serpulo",evolution:"Grizzly"},
+{name:"Panther",cost:8000,earnRate:18,description:"18 coins/min",unlockWave:25,unlockShopLvl:5,planet:"serpulo",evolution:"Jaguar"},
+{name:"Lion",cost:15000,earnRate:30,description:"30 coins/min",unlockWave:35,unlockShopLvl:7,planet:"serpulo",evolution:null},
+{name:"Wolf",cost:12000,earnRate:25,description:"25 coins/min",unlockWave:30,unlockShopLvl:6,planet:"serpulo",evolution:null},
+{name:"Phoenix",cost:20000,earnRate:40,description:"40 coins/min",unlockWave:40,unlockShopLvl:8,planet:"serpulo",evolution:null},
+{name:"Cobra",cost:6000,earnRate:15,description:"15 coins/min",unlockWave:22,unlockShopLvl:5,planet:"erekir",evolution:"Python"},
+{name:"Hawk",cost:10000,earnRate:22,description:"22 coins/min",unlockWave:28,unlockShopLvl:6,planet:"erekir",evolution:"Falcon"},
+{name:"Tiger",cost:18000,earnRate:35,description:"35 coins/min",unlockWave:38,unlockShopLvl:8,planet:"erekir",evolution:null},
+{name:"Dragon",cost:50000,earnRate:100,description:"100 coins/min",unlockWave:60,unlockShopLvl:12,planet:"both",evolution:null}
+];
+
+const PET_MISSIONS=[
+{name:"Scout Mission",duration:120,reward:40,requirements:{minPets:1}},
+{name:"Resource Hunt",duration:240,reward:90,requirements:{minPets:2}},
+{name:"Treasure Search",duration:480,reward:200,requirements:{minPets:3}},
+{name:"Epic Journey",duration:900,reward:450,requirements:{minPets:5}}
 ];
 
 const WORK_ACTIVITIES=[{name:"Wave Defense",desc:"Complete 5 waves",reward:50,progress:5,type:"waves"},{name:"Enemy Hunter",desc:"Kill 30 enemies",reward:30,progress:30,type:"kills"},{name:"Builder",desc:"Place 20 buildings",reward:40,progress:20,type:"builds"}];
 
-const REDEEM_CODES={"WELCOME2024":50,"FREEGOLD":100,"EPICWIN":200,"VIPACCESS":300,"MEGABONUS":500,"LEGENDARY":1000,"BLESSED2024":150,"GIFT888":250,"LUCKY999":350,"SamielXD15":15,"NEWBIE10":10,"START25":25,"COINS50":50};
+const REDEEM_CODES={"WELCOME2024":50,"FREEGOLD":100,"EPICWIN":200,"VIPACCESS":300,"MEGABONUS":500,"LEGENDARY":1000,"BLESSED2024":150,"GIFT888":250,"LUCKY999":350,"SamielXD15":15,"NEWBIE10":10,"START25":25,"COINS50":50,"EREKIR100":100,"SERPULO50":50,"HALAL2024":777};
 
-const ACHIEVEMENTS=[{id:"kill100",name:"Warrior",desc:"Kill 100 enemies",target:100,reward:50,type:"kills"},{id:"wave20",name:"Survivor",desc:"Complete 20 waves",target:20,reward:100,type:"waves"},{id:"earn500",name:"Earner",desc:"Earn 500 coins",target:500,reward:75,type:"earn"}];
+const ACHIEVEMENTS=[
+{id:"kill100",name:"Warrior",desc:"Kill 100 enemies",target:100,reward:50,type:"kills"},
+{id:"wave20",name:"Survivor",desc:"Complete 20 waves",target:20,reward:100,type:"waves"},
+{id:"earn500",name:"Earner",desc:"Earn 500 coins",target:500,reward:75,type:"earn"},
+{id:"pet5",name:"Pet Collector",desc:"Own 5 pets",target:5,reward:150,type:"pets"},
+{id:"spend1000",name:"Big Spender",desc:"Spend 1000 coins",target:1000,reward:200,type:"spend"},
+{id:"vip3",name:"VIP Status",desc:"Reach VIP level 3",target:3,reward:250,type:"vip"},
+{id:"converter",name:"Master Trader",desc:"Use converter 10 times",target:10,reward:300,type:"convert"}
+];
+
+const DAILY_CHALLENGES=[
+{name:"Speed Runner",desc:"Complete 10 waves quickly",target:10,reward:100,type:"waves"},
+{name:"Mass Destroyer",desc:"Kill 50 enemies",target:50,reward:80,type:"kills"},
+{name:"Construction Pro",desc:"Build 30 structures",target:30,reward:90,type:"builds"},
+{name:"Coin Master",desc:"Earn 200 coins",target:200,reward:120,type:"earn"}
+];
+
+const MILESTONE_REWARDS=[
+{milestone:100,reward:50,claimed:false,description:"Earn 100 coins"},
+{milestone:500,reward:150,claimed:false,description:"Earn 500 coins"},
+{milestone:1000,reward:300,claimed:false,description:"Earn 1000 coins"},
+{milestone:2500,reward:750,claimed:false,description:"Earn 2500 coins"},
+{milestone:5000,reward:1500,claimed:false,description:"Earn 5000 coins"},
+{milestone:10000,reward:3000,claimed:false,description:"Earn 10000 coins"}
+];
+
+const CRAFTING_RECIPES=[
+{id:"surge_craft",name:"Craft Surge Alloy",inputs:[{item:"copper",amount:100},{item:"lead",amount:100},{item:"titanium",amount:50}],output:{item:Items.surgeAlloy,amount:10},cost:200,unlock:25},
+{id:"phase_craft",name:"Craft Phase Fabric",inputs:[{item:"thorium",amount:50},{item:"titanium",amount:80}],output:{item:Items.phaseFabric,amount:15},cost:150,unlock:20},
+{id:"plastanium_craft",name:"Craft Plastanium",inputs:[{item:"titanium",amount:60},{item:"coal",amount:40}],output:{item:Items.plastanium,amount:20},cost:100,unlock:15}
+];
 
 const QUEST_TEMPLATES=[{id:"kill30",name:"Destroyer",desc:"Kill 30 enemies",target:30,reward:20,type:"kills"},{id:"wave5",name:"Survivor",desc:"Complete 5 waves",target:5,reward:25,type:"waves"},{id:"spend50",name:"Shopper",desc:"Spend 50 coins",target:50,reward:15,type:"spend"}];
 
 const LOGIN_REWARDS=[10,15,20,25,30,40,50,75,100,150];
 const COIN_RATES={enemyKill:1,waveComplete:5,sectorCapture:50};
 
-const COOLDOWN_TIMES={"Copper":60,"Lead":60,"Coal":60,"Titanium":60,"Thorium":60,"Skip Wave":300,"Repair":180};
+const COOLDOWN_TIMES={"Copper":60,"Lead":60,"Coal":60,"Titanium":60,"Thorium":60,"Beryllium":60,"Tungsten":60,"Oxide":60,"Carbide":60,"Skip Wave":300,"Repair":180};
 
 const BULK_DISCOUNTS=[{min:100,max:499,bonus:0.10,label:"+10%"},{min:500,max:999,bonus:0.20,label:"+20%"},{min:1000,max:999999,bonus:0.30,label:"+30%"}];
 
+const BOSS_WAVES=[
+{name:"Mega Fortress",cost:500,reward:150,description:"Spawn tough boss",difficulty:"Easy"},
+{name:"Ultimate Reign",cost:1000,reward:350,description:"Spawn powerful boss",difficulty:"Hard"},
+{name:"Apex Predator",cost:2000,reward:800,description:"Spawn extreme boss",difficulty:"Extreme"}
+];
+
+const CONVERTER_RECIPES=[
+{from:"copper",to:"beryllium",fromItem:Items.copper,toItem:Items.beryllium,rate:2,unlock:15},
+{from:"beryllium",to:"copper",fromItem:Items.beryllium,toItem:Items.copper,rate:2,unlock:15},
+{from:"lead",to:"tungsten",fromItem:Items.lead,toItem:Items.tungsten,rate:3,unlock:20},
+{from:"tungsten",to:"lead",fromItem:Items.tungsten,toItem:Items.lead,rate:3,unlock:20},
+{from:"titanium",to:"oxide",fromItem:Items.titanium,toItem:Items.oxide,rate:4,unlock:25},
+{from:"oxide",to:"titanium",fromItem:Items.oxide,toItem:Items.titanium,rate:4,unlock:25}
+];
+
+const EXPEDITION_TYPES=[
+{name:"Quick Scout",duration:180,reward:80,requirements:{minWave:10}},
+{name:"Resource Raid",duration:300,reward:150,requirements:{minWave:20}},
+{name:"Deep Exploration",duration:600,reward:350,requirements:{minWave:35}}
+];
+
 const AUCTION_EXCLUSIVE=[
-{name:"Plastanium",cost:5000,type:"resource",item:Items.plastanium,amount:50,description:"plastanium",unlockWave:30,unlockShopLvl:6},
-{name:"Phase Fabric",cost:8000,type:"resource",item:Items.phaseFabric,amount:30,description:"phase fabric",unlockWave:40,unlockShopLvl:8},
-{name:"Surge Alloy",cost:12000,type:"resource",item:Items.surgeAlloy,amount:20,description:"surge alloy",unlockWave:50,unlockShopLvl:10}
+{name:"Plastanium",cost:5000,type:"resource",item:Items.plastanium,amount:50,description:"plastanium",unlockWave:30,unlockShopLvl:6,planet:"serpulo"},
+{name:"Phase Fabric",cost:8000,type:"resource",item:Items.phaseFabric,amount:30,description:"phase fabric",unlockWave:40,unlockShopLvl:8,planet:"serpulo"},
+{name:"Surge Alloy",cost:12000,type:"resource",item:Items.surgeAlloy,amount:20,description:"surge alloy",unlockWave:50,unlockShopLvl:10,planet:"serpulo"},
+{name:"Carbide",cost:6000,type:"resource",item:Items.carbide,amount:40,description:"carbide",unlockWave:32,unlockShopLvl:7,planet:"erekir"}
 ];
 
 const shopCategories={
-resources:[
-{name:"Copper",cost:5,type:"resource",item:Items.copper,amount:10,description:"copper",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:0,unlockShopLvl:1,baseRate:10},
-{name:"Lead",cost:8,type:"resource",item:Items.lead,amount:10,description:"lead",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:5,unlockShopLvl:1,baseRate:10},
-{name:"Coal",cost:15,type:"resource",item:Items.coal,amount:10,description:"coal",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:8,unlockShopLvl:2,baseRate:10},
-{name:"Titanium",cost:25,type:"resource",item:Items.titanium,amount:10,description:"titanium",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:12,unlockShopLvl:3,baseRate:10},
-{name:"Thorium",cost:40,type:"resource",item:Items.thorium,amount:10,description:"thorium",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:20,unlockShopLvl:4,baseRate:10}
+serpulo_resources:[
+{name:"Copper",cost:5,type:"resource",item:Items.copper,amount:10,description:"copper",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:0,unlockShopLvl:1,baseRate:10,planet:"serpulo"},
+{name:"Lead",cost:8,type:"resource",item:Items.lead,amount:10,description:"lead",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:5,unlockShopLvl:1,baseRate:10,planet:"serpulo"},
+{name:"Coal",cost:15,type:"resource",item:Items.coal,amount:10,description:"coal",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:8,unlockShopLvl:2,baseRate:10,planet:"serpulo"},
+{name:"Titanium",cost:25,type:"resource",item:Items.titanium,amount:10,description:"titanium",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:12,unlockShopLvl:3,baseRate:10,planet:"serpulo"},
+{name:"Thorium",cost:40,type:"resource",item:Items.thorium,amount:10,description:"thorium",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:20,unlockShopLvl:4,baseRate:10,planet:"serpulo"}
 ],
-units:[
-{name:"Flare",cost:300,type:"unit",unit:UnitTypes.flare,amount:5,description:"flare",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:0,unlockShopLvl:1},
-{name:"Dagger",cost:400,type:"unit",unit:UnitTypes.dagger,amount:3,description:"dagger",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:3,unlockShopLvl:1},
-{name:"Mace",cost:600,type:"unit",unit:UnitTypes.mace,amount:2,description:"mace",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:10,unlockShopLvl:2}
+erekir_resources:[
+{name:"Beryllium",cost:6,type:"resource",item:Items.beryllium,amount:10,description:"beryllium",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:0,unlockShopLvl:1,baseRate:10,planet:"erekir"},
+{name:"Tungsten",cost:12,type:"resource",item:Items.tungsten,amount:10,description:"tungsten",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:6,unlockShopLvl:2,baseRate:10,planet:"erekir"},
+{name:"Oxide",cost:20,type:"resource",item:Items.oxide,amount:10,description:"oxide",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:10,unlockShopLvl:3,baseRate:10,planet:"erekir"},
+{name:"Carbide",cost:35,type:"resource",item:Items.carbide,amount:10,description:"carbide",maxLevel:5,costMultiplier:2.0,amountMultiplier:1.5,unlockWave:18,unlockShopLvl:4,baseRate:10,planet:"erekir"}
+],
+serpulo_units:[
+{name:"Flare",cost:300,type:"unit",unit:UnitTypes.flare,amount:5,description:"flare",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:0,unlockShopLvl:1,planet:"serpulo"},
+{name:"Dagger",cost:400,type:"unit",unit:UnitTypes.dagger,amount:3,description:"dagger",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:3,unlockShopLvl:1,planet:"serpulo"},
+{name:"Mace",cost:600,type:"unit",unit:UnitTypes.mace,amount:2,description:"mace",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:10,unlockShopLvl:2,planet:"serpulo"}
+],
+erekir_units:[
+{name:"Stell",cost:350,type:"unit",unit:UnitTypes.stell,amount:4,description:"stell",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:0,unlockShopLvl:1,planet:"erekir"},
+{name:"Locus",cost:500,type:"unit",unit:UnitTypes.locus,amount:3,description:"locus",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:5,unlockShopLvl:2,planet:"erekir"},
+{name:"Merui",cost:800,type:"unit",unit:UnitTypes.merui,amount:2,description:"merui",maxLevel:5,costMultiplier:1.9,amountMultiplier:1.4,unlockWave:12,unlockShopLvl:3,planet:"erekir"}
 ],
 boosts:[
-{name:"Skip Wave",cost:1250,type:"boost",effect:"skipWaves",value:1,description:"Skip wave",unlockWave:15,unlockShopLvl:3},
-{name:"Repair",cost:750,type:"boost",effect:"heal",value:0.25,description:"Heal buildings",unlockWave:8,unlockShopLvl:2}
+{name:"Skip Wave",cost:1250,type:"boost",effect:"skipWaves",value:1,description:"Skip wave",unlockWave:15,unlockShopLvl:3,planet:"both"},
+{name:"Repair",cost:750,type:"boost",effect:"heal",value:0.25,description:"Heal buildings",unlockWave:8,unlockShopLvl:2,planet:"both"}
 ],
 special:[]
 };
@@ -97,13 +175,143 @@ startPetSystem();
 checkDailyWork();
 generateAuction();
 startAuctionTimers();
+detectPlanet();
+setupShopCommands();
+setupShopKeybind();
+addPauseMenuButton();
+initDailyChallenges();
+initMilestones();
 });
 
-Events.on(WorldLoadEvent,()=>{Timer.schedule(()=>saveCoins(),0,60)});
+Events.on(WorldLoadEvent,()=>{
+Timer.schedule(()=>saveCoins(),0,60);
+detectPlanet();
+});// dwa
+function detectPlanet(){
+try{
+if(Vars.state && Vars.state.rules && Vars.state.rules.planet){
+let planet = Vars.state.rules.planet;
+if(planet.name == "erekir"){
+currentPlanet = "erekir";
+}else{
+currentPlanet = "serpulo";
+}
+}
+}catch(e){
+currentPlanet = "serpulo";
+}
+}
 
-function initAchievements(){ACHIEVEMENTS.forEach(a=>{if(!achievementProgress[a.id])achievementProgress[a.id]={current:0,claimed:false}})}
+function setupShopCommands(){
+Events.on(PlayerChatEvent, e => {
+if(e.message == "/shop" || e.message == "/store"){
+openShop();
+}
+});
+}
 
-function checkDailyLogin(){let now=Date.now(),day=86400000;if(now-lastLogin>day*2){loginStreak=0;loginRewardClaimed=false}else if(now-lastLogin>day){loginStreak++;loginRewardClaimed=false}lastLogin=now;saveCoins()}
+function setupShopKeybind(){
+Core.app.post(() => {
+try{
+Core.input.addProcessor(new InputProcessor(){
+keyDown(keycode){
+if(keycode == KeyCode.k){
+openShop();
+return true;
+}
+return false;
+},
+keyUp(keycode){
+return false;
+},
+keyTyped(character){
+return false;
+},
+touchDown(screenX, screenY, pointer, button){
+return false;
+},
+touchUp(screenX, screenY, pointer, button){
+return false;
+},
+touchDragged(screenX, screenY, pointer){
+return false;
+},
+mouseMoved(screenX, screenY){
+return false;
+},
+scrolled(amountX, amountY){
+return false;
+}
+});
+}catch(e){}
+});
+}
+
+function addPauseMenuButton(){
+try{
+let shopButtonAdded = false;
+Events.run(Trigger.update, () => {
+if(Vars.ui && Vars.ui.paused && Vars.ui.paused.shown && !shopButtonAdded){
+Core.app.post(() => {
+try{
+let pauseTable = Vars.ui.paused.cont;
+pauseTable.row();
+pauseTable.button("@shop (Press K)", Styles.cleart, () => {
+Vars.ui.paused.hide();
+openShop();
+}).size(220, 60).padTop(10);
+shopButtonAdded = true;
+}catch(e){}
+});
+}
+if(Vars.ui && Vars.ui.paused && !Vars.ui.paused.shown){
+shopButtonAdded = false;
+}
+});
+}catch(e){}
+}
+
+function initAchievements(){
+ACHIEVEMENTS.forEach(a=>{
+if(!achievementProgress[a.id])achievementProgress[a.id]={current:0,claimed:false};
+});
+}
+
+function initDailyChallenges(){
+let now=Date.now();
+if(now-lastChallengeReset>86400000){
+dailyChallenges.forEach(challenge=>{
+if(!challengeProgress[challenge.name]){
+challengeProgress[challenge.name]={current:0,completed:false,claimed:false};
+}else{
+challengeProgress[challenge.name]={current:0,completed:false,claimed:false};
+}
+});
+lastChallengeReset=now;
+saveCoins();
+}
+}
+
+function initMilestones(){
+MILESTONE_REWARDS.forEach(m=>{
+if(!milestoneRewards.find(mr=>mr.milestone==m.milestone)){
+milestoneRewards.push({milestone:m.milestone,reward:m.reward,claimed:false,description:m.description});
+}
+});
+}
+
+function checkDailyLogin(){
+let now=Date.now(),day=86400000;
+if(now-lastLogin>day*2){
+loginStreak=0;
+loginRewardClaimed=false;
+}else if(now-lastLogin>day){
+loginStreak++;
+loginRewardClaimed=false;
+}
+lastLogin=now;
+saveCoins();
+}
 
 function createShopUI(){
 let mainTable=new Table();
@@ -122,7 +330,7 @@ row2.background(Styles.black6);
 shopLevelLabel=row2.add("[lime]Shop Lv "+shopLevel).pad(20).get();
 mainTable.add(row2).growX().height(20).row();
 
-mainTable.button("SHOP",()=>{
+mainTable.button("SHOP [K]",()=>{
 playSound("switch", 0.6, 1.0);
 openShop();
 }).minWidth(120).height(30).pad(2).get();
@@ -136,7 +344,9 @@ mainTable.visible=Vars.ui.hudfrag.shown;
 });
 
 Vars.ui.hudGroup.addChild(mainTable);
-}function claimDailyLoginReward(){
+}
+
+function claimDailyLoginReward(){
 if(loginRewardClaimed){
 Vars.ui.showInfoToast("[yellow]Already claimed!",2);
 playSound("pop", 0.5, 0.8);
@@ -151,16 +361,39 @@ loginRewardClaimed=true;
 addVIPExp(10);
 playSound("coins", 0.8, 1.2);
 Vars.ui.showInfoToast("[lime]Day "+loginStreak+" +"+reward+" Coins!",3);
+checkMilestones();
 saveCoins();
 }
 
-function checkDailyWork(){let now=Date.now(),day=86400000;if(now-lastWorkReset>day){dailyWorkDone=false;workProgress=0;currentWorkActivity=null;lastWorkReset=now;saveCoins()}}
+function checkDailyWork(){
+let now=Date.now(),day=86400000;
+if(now-lastWorkReset>day){
+dailyWorkDone=false;
+workProgress=0;
+currentWorkActivity=null;
+lastWorkReset=now;
+saveCoins();
+}
+}
 
-function isItemUnlocked(item){if(!item)return false;return totalWavesCompleted>=(item.unlockWave||0)&&shopLevel>=(item.unlockShopLvl||1)}
+function isItemUnlocked(item){
+if(!item)return false;
+return totalWavesCompleted>=(item.unlockWave||0)&&shopLevel>=(item.unlockShopLvl||1);
+}
 
-function getVIPMultiplier(){if(vipLevel>=5)return 6;if(vipLevel>=4)return 5;if(vipLevel>=3)return 4;if(vipLevel>=2)return 3;if(vipLevel>=1)return 2;return 1}
+function getVIPMultiplier(){
+if(vipLevel>=5)return 6;
+if(vipLevel>=4)return 5;
+if(vipLevel>=3)return 4;
+if(vipLevel>=2)return 3;
+if(vipLevel>=1)return 2;
+return 1;
+}
 
-function getVIPDiscount(){let vip=VIP_LEVELS.find(v=>v.level==vipLevel);return vip?vip.discount:0}
+function getVIPDiscount(){
+let vip=VIP_LEVELS.find(v=>v.level==vipLevel);
+return vip?vip.discount:0;
+}
 
 function addVIPExp(amount){
 vipExp+=amount;
@@ -171,16 +404,26 @@ vipLevel++;
 vipExp=0;
 playSound("switch", 1.0, 1.5);
 Vars.ui.showInfoToast("[gold]VIP LEVEL "+vipLevel+"!",3);
+updateAchievement("vip",1);
 saveCoins();
 }
 }
 }
 
-function getItemLevel(itemName){return itemLevels[itemName]||1}
+function getItemLevel(itemName){return itemLevels[itemName]||1;}
 
-function getItemPrice(item){let lvl=getItemLevel(item.name);if(lvl<=1)return item.cost;return Math.floor(item.cost*Math.pow(item.costMultiplier||2.0,lvl-1))}
+function getItemPrice(item){
+let lvl=getItemLevel(item.name);
+if(lvl<=1)return item.cost;
+return Math.floor(item.cost*Math.pow(item.costMultiplier||2.0,lvl-1));
+}
 
-function getItemAmount(item){let lvl=getItemLevel(item.name);if(!item.amount&&!item.value)return lvl;let base=item.amount||item.value||1;return Math.floor(base*Math.pow(item.amountMultiplier||1.5,lvl-1))}
+function getItemAmount(item){
+let lvl=getItemLevel(item.name);
+if(!item.amount&&!item.value)return lvl;
+let base=item.amount||item.value||1;
+return Math.floor(base*Math.pow(item.amountMultiplier||1.5,lvl-1));
+}
 
 function addShopRep(amount){
 shopReputation+=amount;
@@ -213,6 +456,98 @@ playSound("coins", 0.9, 1.0);
 Vars.ui.showInfoToast("[lime]"+petName+" adopted!",3);
 addVIPExp(10);
 addShopRep(5);
+updateAchievement("pets",1);
+saveCoins();
+if(currentShopDialog){
+refreshShop();
+}
+}
+
+function evolvePet(petName){
+let pet=PETS.find(p=>p.name==petName);
+if(!pet||!pet.evolution)return;
+if(ownedPets.indexOf(petName)===-1){
+Vars.ui.showInfoToast("[red]Pet not owned!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+let evolutionPet=PETS.find(p=>p.name==pet.evolution);
+if(!evolutionPet)return;
+if(!isItemUnlocked(evolutionPet)){
+Vars.ui.showInfoToast("[red]Evolution locked!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+if(coins<evolutionPet.cost){
+Vars.ui.showInfoToast("[red]Need "+evolutionPet.cost+" coins!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+coins-=evolutionPet.cost;
+totalSpent+=evolutionPet.cost;
+let index=ownedPets.indexOf(petName);
+ownedPets[index]=evolutionPet.name;
+playSound("coins", 1.0, 1.3);
+Vars.ui.showInfoToast("[gold]"+petName+" evolved to "+evolutionPet.name+"!",3);
+addVIPExp(20);
+addShopRep(10);
+saveCoins();
+if(currentShopDialog){
+refreshShop();
+}
+}
+
+function startPetMission(missionIndex){
+let mission=PET_MISSIONS[missionIndex];
+if(!mission)return;
+if(ownedPets.length<mission.requirements.minPets){
+Vars.ui.showInfoToast("[red]Need "+mission.requirements.minPets+" pets!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+let activeMission=petMissions.find(m=>m.name==mission.name&&!m.completed);
+if(activeMission){
+Vars.ui.showInfoToast("[yellow]Mission already active!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+petMissions.push({
+name:mission.name,
+reward:mission.reward,
+endTime:Date.now()+mission.duration*1000,
+completed:false,
+claimed:false
+});
+playSound("pop", 0.7, 1.0);
+Vars.ui.showInfoToast("[cyan]Pet mission started!",2);
+saveCoins();
+Timer.schedule(()=>{
+checkPetMissions();
+},mission.duration);
+}
+
+function checkPetMissions(){
+let now=Date.now();
+petMissions.forEach(mission=>{
+if(!mission.completed&&now>=mission.endTime){
+mission.completed=true;
+playSound("coins", 0.8, 1.2);
+Vars.ui.showInfoToast("[lime]Pet mission complete!",2);
+saveCoins();
+}
+});
+}
+
+function claimPetMission(missionName){
+let mission=petMissions.find(m=>m.name==missionName&&m.completed&&!m.claimed);
+if(!mission)return;
+coins+=mission.reward;
+totalEarned+=mission.reward;
+mission.claimed=true;
+playSound("coins", 0.9, 1.1);
+Vars.ui.showInfoToast("[gold]+"+mission.reward+" Coins!",2);
+addVIPExp(5);
+checkMilestones();
 saveCoins();
 if(currentShopDialog){
 refreshShop();
@@ -236,10 +571,18 @@ totalEarned+=reward;
 redeemedCodes.push(code);
 playSound("coins", 1.0, 1.3);
 Vars.ui.showInfoToast("[gold]Code: +"+reward+" Coins!",3);
+checkMilestones();
 saveCoins();
 }
 
-function updateAchievement(type,amt){ACHIEVEMENTS.forEach(a=>{if(a.type==type&&!achievementProgress[a.id].claimed){achievementProgress[a.id].current+=amt;saveCoins()}})}
+function updateAchievement(type,amt){
+ACHIEVEMENTS.forEach(a=>{
+if(a.type==type&&!achievementProgress[a.id].claimed){
+achievementProgress[a.id].current+=amt;
+saveCoins();
+}
+});
+}
 
 function claimAchievement(aid){
 let a=ACHIEVEMENTS.find(x=>x.id==aid);
@@ -253,22 +596,124 @@ addVIPExp(15);
 addShopRep(5);
 playSound("coins", 0.9, 1.4);
 Vars.ui.showInfoToast("[gold]+"+a.reward+" Coins!",3);
+checkMilestones();
 saveCoins();
 }
+}
+
+function updateChallengeProgress(type,amt){
+DAILY_CHALLENGES.forEach(challenge=>{
+if(challenge.type==type&&challengeProgress[challenge.name]&&!challengeProgress[challenge.name].completed){
+challengeProgress[challenge.name].current+=amt;
+if(challengeProgress[challenge.name].current>=challenge.target){
+challengeProgress[challenge.name].completed=true;
+playSound("switch", 0.7, 1.2);
+Vars.ui.showInfoToast("[lime]Challenge Complete: "+challenge.name,2);
+}
+saveCoins();
+}
+});
+}
+
+function claimChallenge(challengeName){
+let challenge=DAILY_CHALLENGES.find(c=>c.name==challengeName);
+if(!challenge)return;
+let progress=challengeProgress[challengeName];
+if(!progress||!progress.completed||progress.claimed)return;
+coins+=challenge.reward;
+totalEarned+=challenge.reward;
+progress.claimed=true;
+playSound("coins", 0.9, 1.3);
+Vars.ui.showInfoToast("[gold]+"+challenge.reward+" Coins!",2);
+addVIPExp(10);
+checkMilestones();
+saveCoins();
+}
+
+function checkMilestones(){
+milestoneRewards.forEach(m=>{
+if(totalEarned>=m.milestone&&!m.claimed){
+m.canClaim=true;
+}
+});
+}
+
+function claimMilestone(milestone){
+let m=milestoneRewards.find(mr=>mr.milestone==milestone);
+if(!m||m.claimed||totalEarned<m.milestone)return;
+coins+=m.reward;
+totalEarned+=m.reward;
+m.claimed=true;
+playSound("coins", 1.0, 1.5);
+Vars.ui.showInfoToast("[gold]Milestone! +"+m.reward+" Coins!",3);
+addVIPExp(20);
+saveCoins();
+}
+
+function useConverter(recipeIndex,amount){
+let recipe=CONVERTER_RECIPES[recipeIndex];
+if(!recipe||totalWavesCompleted<recipe.unlock)return;
+let core=Vars.player.team().core();
+if(!core)return;
+let fromAmount=amount*recipe.rate;
+if(core.items.get(recipe.fromItem)<fromAmount){
+Vars.ui.showInfoToast("[red]Need "+fromAmount+" "+recipe.from+"!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+core.items.remove(recipe.fromItem,fromAmount);
+core.items.add(recipe.toItem,amount);
+playSound("coins", 0.6, 1.0);
+Vars.ui.showInfoToast("[lime]Converted "+fromAmount+" "+recipe.from+" to "+amount+" "+recipe.to+"!",2);
+updateAchievement("convert",1);
+saveCoins();
+}
+
+function craftItem(recipeId){
+let recipe=CRAFTING_RECIPES.find(r=>r.id==recipeId);
+if(!recipe||totalWavesCompleted<recipe.unlock)return;
+let core=Vars.player.team().core();
+if(!core)return;
+let canCraft=true;
+recipe.inputs.forEach(input=>{
+let itemObj=Items[input.item];
+if(core.items.get(itemObj)<input.amount){
+canCraft=false;
+}
+});
+if(!canCraft){
+Vars.ui.showInfoToast("[red]Not enough resources!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+if(coins<recipe.cost){
+Vars.ui.showInfoToast("[red]Need "+recipe.cost+" coins!",2);
+playSound("pop", 0.5, 0.8);
+return;
+}
+coins-=recipe.cost;
+totalSpent+=recipe.cost;
+recipe.inputs.forEach(input=>{
+let itemObj=Items[input.item];
+core.items.remove(itemObj,input.amount);
+});
+core.items.add(recipe.output.item,recipe.output.amount);
+playSound("coins", 0.8, 1.1);
+Vars.ui.showInfoToast("[lime]Crafted "+recipe.output.amount+" "+recipe.output.item.name+"!",2);
+addVIPExp(15);
+saveCoins();
 }
 
 function generateAuction(){
 auctionItems=[];
 let available=AUCTION_EXCLUSIVE.filter(item=>isItemUnlocked(item));
 if(available.length==0)return;
-
 let numAuctions=Math.min(3,available.length);
 for(let i=0;i<numAuctions;i++){
 let item=available[Math.floor(Math.random()*available.length)];
 let startPrice=Math.floor(item.cost*0.5);
 let buyNowPrice=Math.floor(item.cost*1.5);
 let auctionId="auction_"+Date.now()+"_"+i;
-
 auctionItems.push({
 id:auctionId,
 item:item,
@@ -277,7 +722,6 @@ buyNowPrice:buyNowPrice,
 currentBid:startPrice,
 highestBidder:"System"
 });
-
 auctionEndTimes[auctionId]=300;
 auctionBids[auctionId]=startPrice;
 }
@@ -295,8 +739,7 @@ endAuction(auction);
 }
 });
 },0,1);
-}
-
+}// telu
 function placeBid(auctionId,bidAmount){
 let auction=auctionItems.find(a=>a.id==auctionId);
 if(!auction){
@@ -304,30 +747,25 @@ Vars.ui.showInfoToast("[red]Auction not found!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 if(auctionEndTimes[auctionId]<=0){
 Vars.ui.showInfoToast("[red]Auction ended!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 let minBid=auction.currentBid+Math.floor(auction.startPrice*0.1);
 if(bidAmount<minBid){
 Vars.ui.showInfoToast("[red]Bid at least "+minBid+"!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 if(coins<bidAmount){
 Vars.ui.showInfoToast("[red]Not enough coins!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 auction.currentBid=bidAmount;
 auction.highestBidder="Player";
 auctionBids[auctionId]=bidAmount;
-
 playSound("pop", 0.6, 1.0);
 Vars.ui.showInfoToast("[lime]Bid placed: "+bidAmount+"!",2);
 saveCoins();
@@ -337,24 +775,19 @@ refreshShop();
 function buyNowAuction(auctionId){
 let auction=auctionItems.find(a=>a.id==auctionId);
 if(!auction)return;
-
 if(coins<auction.buyNowPrice){
 Vars.ui.showInfoToast("[red]Need "+auction.buyNowPrice+" coins!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 coins-=auction.buyNowPrice;
 totalSpent+=auction.buyNowPrice;
-
 let core=Vars.player.team().core();
 if(core&&auction.item.item){
 core.items.add(auction.item.item,auction.item.amount);
 }
-
 auctionEndTimes[auctionId]=0;
 auctionItems=auctionItems.filter(a=>a.id!=auctionId);
-
 playSound("coins", 1.0, 1.0);
 Vars.ui.showInfoToast("[gold]Bought "+auction.item.name+"!",3);
 addVIPExp(20);
@@ -367,18 +800,15 @@ function endAuction(auction){
 if(auction.highestBidder=="Player"){
 coins-=auction.currentBid;
 totalSpent+=auction.currentBid;
-
 let core=Vars.player.team().core();
 if(core&&auction.item.item){
 core.items.add(auction.item.item,auction.item.amount);
 }
-
 playSound("coins", 0.9, 1.1);
 Vars.ui.showInfoToast("[gold]Won auction: "+auction.item.name+"!",3);
 addVIPExp(15);
 addShopRep(8);
 }
-
 auctionItems=auctionItems.filter(a=>a.id!=auction.id);
 if(auctionItems.length<2){
 generateAuction();
@@ -397,7 +827,7 @@ workProgress=0;
 currentWorkActivity=activity;
 playSound("pop", 0.7, 1.0);
 Vars.ui.showInfoToast("[cyan]Working on: "+activity.name,3);
-if(activeWorkListener){Events.remove(activeWorkListener)}
+if(activeWorkListener){Events.remove(activeWorkListener);}
 if(activity.type=="kills"){
 activeWorkListener=Events.on(UnitDestroyEvent,e=>{
 if(e.unit.team!=Vars.player.team()&&currentWorkActivity&&currentWorkActivity.name==activity.name){
@@ -428,13 +858,14 @@ totalEarned+=activity.reward;
 dailyWorkDone=true;
 workProgress=0;
 currentWorkActivity=null;
-if(activeWorkListener){Events.remove(activeWorkListener);activeWorkListener=null}
+if(activeWorkListener){Events.remove(activeWorkListener);activeWorkListener=null;}
 playSound("coins", 1.0, 1.2);
 Vars.ui.showInfoToast("[green]"+activity.name+" complete! +"+activity.reward+" Coins",3);
+checkMilestones();
 saveCoins();
 }
 
-function isFavorite(itemName){return favoriteItems.indexOf(itemName)!==-1}
+function isFavorite(itemName){return favoriteItems.indexOf(itemName)!==-1;}
 
 function toggleFavorite(itemName){
 let idx=favoriteItems.indexOf(itemName);
@@ -448,23 +879,105 @@ playSound("pop", 0.5, 0.8);
 saveCoins();
 }
 
-function getBulkDiscount(quantity){for(let i=0;i<BULK_DISCOUNTS.length;i++){let tier=BULK_DISCOUNTS[i];if(quantity>=tier.min&&quantity<=tier.max){return tier}}return null}
+function getBulkDiscount(quantity){
+for(let i=0;i<BULK_DISCOUNTS.length;i++){
+let tier=BULK_DISCOUNTS[i];
+if(quantity>=tier.min&&quantity<=tier.max){
+return tier;
+}
+}
+return null;
+}
 
-function calculateResourcePurchase(item,quantity){let baseRate=item.baseRate||10;let baseAmount=quantity;let baseCost=Math.ceil(quantity/baseRate)*item.cost;let discount=getBulkDiscount(quantity);let bonusAmount=0;let bonusLabel="";if(discount){bonusAmount=Math.floor(baseAmount*discount.bonus);bonusLabel=discount.label}let totalAmount=baseAmount+bonusAmount;return{cost:baseCost,baseAmount:baseAmount,bonusAmount:bonusAmount,totalAmount:totalAmount,bonusLabel:bonusLabel}}
+function calculateResourcePurchase(item,quantity){
+let baseRate=item.baseRate||10;
+let baseAmount=quantity;
+let baseCost=Math.ceil(quantity/baseRate)*item.cost;
+let discount=getBulkDiscount(quantity);
+let bonusAmount=0;
+let bonusLabel="";
+if(discount){
+bonusAmount=Math.floor(baseAmount*discount.bonus);
+bonusLabel=discount.label;
+}
+let totalAmount=baseAmount+bonusAmount;
+return{cost:baseCost,baseAmount:baseAmount,bonusAmount:bonusAmount,totalAmount:totalAmount,bonusLabel:bonusLabel};
+}
 
-function getSelectedQuantity(itemName){if(!selectedQuantities[itemName]){selectedQuantities[itemName]=10}return selectedQuantities[itemName]}
+function getSelectedQuantity(itemName){
+if(!selectedQuantities[itemName]){
+selectedQuantities[itemName]=10;
+}
+return selectedQuantities[itemName];
+}
 
-function setSelectedQuantity(itemName,quantity){if(quantity<10)quantity=10;selectedQuantities[itemName]=quantity}
+function setSelectedQuantity(itemName,quantity){
+if(quantity<10)quantity=10;
+selectedQuantities[itemName]=quantity;
+}
 
-function isOnCooldown(itemName){if(!COOLDOWN_TIMES[itemName]||!itemCooldowns[itemName])return false;return(Date.now()-itemCooldowns[itemName])/1000<COOLDOWN_TIMES[itemName]}
+function isOnCooldown(itemName){
+if(!COOLDOWN_TIMES[itemName]||!itemCooldowns[itemName])return false;
+return(Date.now()-itemCooldowns[itemName])/1000<COOLDOWN_TIMES[itemName];
+}
 
-function getCooldownRemaining(itemName){if(!isOnCooldown(itemName))return 0;return Math.ceil(COOLDOWN_TIMES[itemName]-(Date.now()-itemCooldowns[itemName])/1000)}
+function getCooldownRemaining(itemName){
+if(!isOnCooldown(itemName))return 0;
+return Math.ceil(COOLDOWN_TIMES[itemName]-(Date.now()-itemCooldowns[itemName])/1000);
+}
 
-function generateSale(){saleItems=[];saleEndTime=SALE_DURATION;let all=[];Object.keys(shopCategories).forEach(c=>{shopCategories[c].forEach(i=>{if(i&&isItemUnlocked(i))all.push(i)})});if(all.length==0)return;for(let i=0;i<MAX_SALE_ITEMS&&i<all.length;i++){let item=all[Math.floor(Math.random()*all.length)];saleItems.push({item:item,discount:Mathf.random(20,50)})}}
+function generateSale(){
+saleItems=[];
+saleEndTime=SALE_DURATION;
+let all=[];
+Object.keys(shopCategories).forEach(c=>{
+shopCategories[c].forEach(i=>{
+if(i&&isItemUnlocked(i))all.push(i);
+});
+});
+if(all.length==0)return;
+for(let i=0;i<MAX_SALE_ITEMS&&i<all.length;i++){
+let item=all[Math.floor(Math.random()*all.length)];
+saleItems.push({item:item,discount:Mathf.random(20,50)});
+}
+}
 
-function startSaleTimer(){Timer.schedule(()=>{if(saleEndTime>0){saleEndTime--;if(saleEndTime<=0){generateSale();Vars.ui.showInfoToast("[yellow]NEW SALE!",2)}}},0,1)}
+function startSaleTimer(){
+Timer.schedule(()=>{
+if(saleEndTime>0){
+saleEndTime--;
+if(saleEndTime<=0){
+generateSale();
+Vars.ui.showInfoToast("[yellow]NEW SALE!",2);
+}
+}
+},0,1);
+}
 
-function startPetSystem(){Timer.schedule(()=>{if(ownedPets.length>0){petCoins++;if(petCoins>=60){let totalEarn=0;ownedPets.forEach(petName=>{let pet=PETS.find(p=>p.name==petName);if(pet)totalEarn+=pet.earnRate});coins+=totalEarn;totalEarned+=totalEarn;petCoins=0;playSound("coins", 0.3, 1.0);Vars.ui.showInfoToast("[lime]Pets: +"+totalEarn+" Coins",2);saveCoins()}}},0,1)}function setupCoinEarning(){
+function startPetSystem(){
+Timer.schedule(()=>{
+if(ownedPets.length>0){
+petCoins++;
+if(petCoins>=60){
+let totalEarn=0;
+ownedPets.forEach(petName=>{
+let pet=PETS.find(p=>p.name==petName);
+if(pet)totalEarn+=pet.earnRate;
+});
+coins+=totalEarn;
+totalEarned+=totalEarn;
+petCoins=0;
+playSound("coins", 0.3, 1.0);
+Vars.ui.showInfoToast("[lime]Pets: +"+totalEarn+" Coins",2);
+checkMilestones();
+saveCoins();
+}
+}
+checkPetMissions();
+},0,1);
+}
+
+function setupCoinEarning(){
 Events.on(UnitDestroyEvent,e=>{
 if(e.unit.team!=Vars.player.team()){
 totalKills++;
@@ -475,9 +988,12 @@ updateQuestProgress("kills",1);
 updateQuestProgress("earn",earn);
 updateAchievement("kills",1);
 updateAchievement("earn",earn);
+updateChallengeProgress("kills",1);
+updateChallengeProgress("earn",earn);
 addVIPExp(1);
 addShopRep(1);
 playSound("coins", 0.3, 1.5);
+checkMilestones();
 saveCoins();
 }
 });
@@ -490,15 +1006,19 @@ updateQuestProgress("waves",1);
 updateQuestProgress("earn",earn);
 updateAchievement("waves",1);
 updateAchievement("earn",earn);
+updateChallengeProgress("waves",1);
+updateChallengeProgress("earn",earn);
 addVIPExp(5);
 addShopRep(2);
 playSound("coins", 0.6, 1.2);
+checkMilestones();
 saveCoins();
 Vars.ui.showInfoToast("Coins +"+earn+" | Wave "+totalWavesCompleted,2);
 });
 Events.on(BlockBuildEndEvent,e=>{
 if(e.team==Vars.player.team()){
 totalBuildings++;
+updateChallengeProgress("builds",1);
 saveCoins();
 }
 });
@@ -544,17 +1064,16 @@ addVIPExp(5);
 addShopRep(2);
 playSound("coins", 0.8, 1.1);
 Vars.ui.showInfoToast("[gold]+"+q.reward+" Coins!",2);
+checkMilestones();
 saveCoins();
 }
 }
 
 function openShop(){
 if(settingsDialog)settingsDialog.hide();
-
 let d=new BaseDialog("SHOP");
 currentShopDialog=d;
 d.cont.clear();
-
 let topBar=new Table();
 topBar.background(Styles.black8);
 topBar.add("[green]Coins: "+coins).pad(5);
@@ -562,8 +1081,9 @@ topBar.add().growX();
 topBar.add("[cyan]Wave: "+totalWavesCompleted).pad(5);
 topBar.add().growX();
 topBar.add("[lime]Shop: "+shopLevel).pad(5);
+topBar.add().growX();
+topBar.add("[accent]"+currentPlanet.toUpperCase()).pad(5);
 d.cont.add(topBar).growX().pad(5).row();
-
 if(saleItems.length>0){
 let saleBar=new Table();
 saleBar.background(Styles.black6);
@@ -571,59 +1091,51 @@ let m=Math.floor(saleEndTime/60),s=saleEndTime%60;
 saleBar.add("[yellow]SALE | "+m+"m "+s+"s").pad(5);
 d.cont.add(saleBar).growX().pad(5).row();
 }
-
 d.cont.image().color(Color.gold).height(3).growX().pad(5).row();
-
 let tb=new Table();
 tb.defaults().size(120,55).pad(3);
-tb.button("All",()=>{playSound("pop", 0.5, 1.0);currentCategory="all";refreshShop()}).checked(b=>currentCategory=="all");
-tb.button("Resources",()=>{playSound("pop", 0.5, 1.0);currentCategory="resources";refreshShop()}).checked(b=>currentCategory=="resources");
+tb.button("All",()=>{playSound("pop", 0.5, 1.0);currentCategory="all";refreshShop();}).checked(b=>currentCategory=="all");
+tb.button("Serpulo",()=>{playSound("pop", 0.5, 1.0);currentCategory="serpulo";refreshShop();}).checked(b=>currentCategory=="serpulo");
 tb.row();
-tb.button("Units",()=>{playSound("pop", 0.5, 1.0);currentCategory="units";refreshShop()}).checked(b=>currentCategory=="units");
-tb.button("Boosts",()=>{playSound("pop", 0.5, 1.0);currentCategory="boosts";refreshShop()}).checked(b=>currentCategory=="boosts");
+tb.button("Erekir",()=>{playSound("pop", 0.5, 1.0);currentCategory="erekir";refreshShop();}).checked(b=>currentCategory=="erekir");
+tb.button("Boosts",()=>{playSound("pop", 0.5, 1.0);currentCategory="boosts";refreshShop();}).checked(b=>currentCategory=="boosts");
 tb.row();
-tb.button("Pets",()=>{playSound("pop", 0.5, 1.0);currentCategory="pets";refreshShop()}).checked(b=>currentCategory=="pets");
-tb.button("Auction",()=>{playSound("pop", 0.5, 1.0);currentCategory="auction";refreshShop()}).checked(b=>currentCategory=="auction");
+tb.button("Pets",()=>{playSound("pop", 0.5, 1.0);currentCategory="pets";refreshShop();}).checked(b=>currentCategory=="pets");
+tb.button("Auction",()=>{playSound("pop", 0.5, 1.0);currentCategory="auction";refreshShop();}).checked(b=>currentCategory=="auction");
 tb.row();
-tb.button("Favorites",()=>{playSound("pop", 0.5, 1.0);currentCategory="favorites";refreshShop()}).checked(b=>currentCategory=="favorites");
+tb.button("Converter",()=>{playSound("pop", 0.5, 1.0);currentCategory="converter";refreshShop();}).checked(b=>currentCategory=="converter");
+tb.button("Crafting",()=>{playSound("pop", 0.5, 1.0);currentCategory="crafting";refreshShop();}).checked(b=>currentCategory=="crafting");
+tb.row();
+tb.button("Favorites",()=>{playSound("pop", 0.5, 1.0);currentCategory="favorites";refreshShop();}).checked(b=>currentCategory=="favorites");
 d.cont.add(tb).growX().pad(5).row();
-
 d.cont.image().color(Color.gray).height(2).growX().pad(5).row();
-
 let ct=new Table();
 currentContentTable=ct;
 refreshShop();
 let sc=new ScrollPane(ct);
 sc.setScrollingDisabled(true,false);
 d.cont.add(sc).grow().pad(10).row();
-
 d.buttons.defaults().size(110,60).pad(4);
-d.buttons.button("Stats",()=>{playSound("pop", 0.6, 1.0);openStats()});
-d.buttons.button("Rewards",()=>{playSound("pop", 0.6, 1.0);openRewards()});
-d.buttons.button("Code",()=>{playSound("pop", 0.6, 1.0);showRedeemDialog()});
-d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide()});
-
-d.hidden(()=>{currentShopDialog=null;currentContentTable=null});
+d.buttons.button("Stats",()=>{playSound("pop", 0.6, 1.0);openStats();});
+d.buttons.button("Rewards",()=>{playSound("pop", 0.6, 1.0);openRewards();});
+d.buttons.button("Code",()=>{playSound("pop", 0.6, 1.0);showRedeemDialog();});
+d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide();});
+d.hidden(()=>{currentShopDialog=null;currentContentTable=null;});
 d.show();
 }
 
 function openStats(){
 if(currentShopDialog)currentShopDialog.hide();
-
 let d=new BaseDialog("STATISTICS");
 settingsDialog=d;
 d.cont.clear();
-
 let topBar=new Table();
 topBar.background(Styles.black8);
 topBar.add("[gold]YOUR STATS").pad(10);
 d.cont.add(topBar).growX().pad(5).row();
-
 d.cont.image().color(Color.gold).height(3).growX().pad(5).row();
-
 let ct=new Table();
 ct.defaults().width(500).pad(5).left();
-
 let itemCounts={};
 purchaseHistory.forEach(p=>{
 itemCounts[p.name]=(itemCounts[p.name]||0)+1;
@@ -636,45 +1148,39 @@ maxCount=itemCounts[name];
 mostBought=name;
 }
 });
-
 let petEarningsPerMin=0;
 ownedPets.forEach(petName=>{
 let pet=PETS.find(p=>p.name==petName);
 if(pet)petEarningsPerMin+=pet.earnRate;
 });
-
-ct.add("[yellow]═══ ECONOMY ═══").row();
+ct.add("[yellow]ECONOMY").row();
 ct.add("[white]Current Coins: [green]"+coins).row();
 ct.add("[white]Total Earned: [lime]"+totalEarned).row();
 ct.add("[white]Total Spent: [orange]"+totalSpent).row();
 ct.add("[white]Net Profit: [accent]"+(totalEarned-totalSpent)).row();
 ct.add("").pad(5).row();
-
-ct.add("[yellow]═══ PROGRESSION ═══").row();
+ct.add("[yellow]PROGRESSION").row();
 ct.add("[white]VIP Level: [gold]"+vipLevel+" ("+vipExp+"/"+((vipLevel<VIP_LEVELS.length)?VIP_LEVELS[vipLevel].expNeeded:"MAX")+")").row();
 ct.add("[white]Shop Level: [lime]"+shopLevel).row();
 ct.add("[white]Shop Rep: [cyan]"+shopReputation).row();
 ct.add("[white]Login Streak: [accent]"+loginStreak+" days").row();
 ct.add("").pad(5).row();
-
-ct.add("[yellow]═══ GAMEPLAY ═══").row();
+ct.add("[yellow]GAMEPLAY").row();
 ct.add("[white]Waves Completed: [cyan]"+totalWavesCompleted).row();
 ct.add("[white]Enemies Killed: [red]"+totalKills).row();
 ct.add("[white]Buildings Placed: [sky]"+totalBuildings).row();
+ct.add("[white]Current Planet: [accent]"+currentPlanet.toUpperCase()).row();
 ct.add("").pad(5).row();
-
-ct.add("[yellow]═══ SHOP ACTIVITY ═══").row();
+ct.add("[yellow]SHOP ACTIVITY").row();
 ct.add("[white]Total Purchases: [accent]"+purchaseHistory.length).row();
 ct.add("[white]Most Bought: [lime]"+mostBought+" ("+maxCount+"x)").row();
 ct.add("[white]Favorite Items: [yellow]"+favoriteItems.length).row();
 ct.add("[white]Codes Redeemed: [gold]"+redeemedCodes.length).row();
 ct.add("").pad(5).row();
-
-ct.add("[yellow]═══ PETS ═══").row();
+ct.add("[yellow]PETS").row();
 ct.add("[white]Owned Pets: [lime]"+ownedPets.length+"/"+PETS.length).row();
 ct.add("[white]Passive Income: [green]"+petEarningsPerMin+" coins/min").row();
 ct.add("").pad(5).row();
-
 let completedQuests=0;
 Object.keys(questProgress).forEach(qid=>{
 if(questProgress[qid].claimed)completedQuests++;
@@ -683,19 +1189,20 @@ let completedAchievements=0;
 Object.keys(achievementProgress).forEach(aid=>{
 if(achievementProgress[aid].claimed)completedAchievements++;
 });
-
-ct.add("[yellow]═══ REWARDS ═══").row();
+let completedChallenges=0;
+Object.keys(challengeProgress).forEach(cname=>{
+if(challengeProgress[cname].claimed)completedChallenges++;
+});
+ct.add("[yellow]REWARDS").row();
 ct.add("[white]Quests Done: [accent]"+completedQuests).row();
 ct.add("[white]Achievements: [gold]"+completedAchievements+"/"+ACHIEVEMENTS.length).row();
+ct.add("[white]Challenges Done: [lime]"+completedChallenges).row();
 ct.add("[white]Work Completed: [cyan]"+(dailyWorkDone?"Yes":"No")).row();
-
 let sc=new ScrollPane(ct);
 sc.setScrollingDisabled(true,false);
 d.cont.add(sc).grow().pad(10).row();
-
-d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide()}).size(150,60);
-
-d.hidden(()=>{settingsDialog=null;currentContentTable=null});
+d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide();}).size(150,60);
+d.hidden(()=>{settingsDialog=null;currentContentTable=null;});
 d.show();
 }
 
@@ -703,94 +1210,21 @@ function refreshShop(){
 if(!currentContentTable)return;
 currentContentTable.clear();
 currentContentTable.defaults().width(500).minHeight(85).pad(5);
-
 switch(currentCategory){
 case"all":showAllItems();break;
-case"resources":showCategoryItems(shopCategories.resources,"RESOURCES");break;
-case"units":showCategoryItems(shopCategories.units,"UNITS");break;
+case"serpulo":showSerpuloCategory();break;
+case"erekir":showErekirCategory();break;
 case"boosts":showCategoryItems(shopCategories.boosts,"BOOSTS");break;
 case"pets":showPets();break;
 case"auction":showAuction();break;
+case"converter":showConverter();break;
+case"crafting":showCrafting();break;
 case"favorites":showFavorites();break;
 }
-}
-
-function showAuction(){
-let t=currentContentTable;
-t.add("[gold]AUCTION HOUSE").pad(10).row();
-t.add("[lightgray]Bid on exclusive items!").pad(5).row();
-t.add("").pad(5).row();
-
-if(auctionItems.length==0){
-t.add("[gray]No auctions available").pad(10).row();
-t.button("[cyan]Generate Auctions",()=>{
-playSound("switch", 0.7, 1.0);
-generateAuction();
-refreshShop();
-}).size(300,60);
-return;
-}
-
-auctionItems.forEach(auction=>{
-let timeLeft=auctionEndTimes[auction.id]||0;
-let minutes=Math.floor(timeLeft/60);
-let seconds=timeLeft%60;
-
-let auctionTable=new Table();
-auctionTable.background(Styles.black6);
-
-auctionTable.add("[accent]"+auction.item.name).pad(5).row();
-auctionTable.add("[lightgray]"+auction.item.amount+" "+auction.item.description).pad(3).row();
-auctionTable.add("[yellow]Current Bid: "+auction.currentBid).pad(3).row();
-auctionTable.add("[white]Buy Now: [lime]"+auction.buyNowPrice).pad(3).row();
-auctionTable.add("[cyan]Time: "+minutes+"m "+seconds+"s").pad(3).row();
-auctionTable.add("[gray]Highest: "+auction.highestBidder).pad(3).row();
-
-let btnTable=new Table();
-btnTable.defaults().size(140,50).pad(3);
-
-btnTable.button("[yellow]Place Bid",()=>{
-playSound("pop", 0.6, 1.0);
-showBidDialog(auction);
-});
-
-btnTable.button("[lime]Buy Now",()=>{
-buyNowAuction(auction.id);
-});
-
-auctionTable.add(btnTable).pad(5).row();
-
-t.add(auctionTable).growX().pad(5).row();
-});
-}
-
-function showBidDialog(auction){
-let d=new BaseDialog("PLACE BID");
-d.cont.add("[yellow]"+auction.item.name).pad(10).row();
-d.cont.add("[white]Current Bid: "+auction.currentBid).pad(5).row();
-let minBid=auction.currentBid+Math.floor(auction.startPrice*0.1);
-d.cont.add("[gray]Minimum: "+minBid).pad(5).row();
-
-let bidField=d.cont.field(minBid+"",txt=>{}).width(300).get();
-d.cont.row();
-
-d.buttons.button("Cancel",()=>{playSound("pop", 0.5, 0.8);d.hide()}).size(140,60);
-d.buttons.button("[green]Bid",()=>{
-let bidAmount=parseInt(bidField.getText());
-if(!isNaN(bidAmount)){
-placeBid(auction.id,bidAmount);
-d.hide();
-refreshShop();
-}
-}).size(140,60);
-
-d.show();
-}
-
+}// pat
 function showAllItems(){
 let t=currentContentTable;
 t.add("[accent]ALL ITEMS").pad(10).row();
-
 if(saleItems.length>0){
 t.add("[yellow]FLASH SALE").pad(10).row();
 saleItems.forEach(si=>{
@@ -802,14 +1236,12 @@ addShopItem(t,si.item,si.discount);
 });
 t.add("").pad(5).row();
 }
-
 Object.keys(shopCategories).forEach(cat=>{
 let allItems=shopCategories[cat];
 let unlocked=allItems.filter(item=>item&&isItemUnlocked(item));
 let locked=allItems.filter(item=>item&&!isItemUnlocked(item));
-
 if(unlocked.length>0||locked.length>0){
-t.add("[accent]"+cat.toUpperCase()).pad(5).row();
+t.add("[accent]"+cat.toUpperCase().replace("_"," ")).pad(5).row();
 unlocked.slice(0,3).forEach(item=>{
 if(item.type=="resource"){
 addResourceShopItem(t,item,0);
@@ -817,20 +1249,72 @@ addResourceShopItem(t,item,0);
 addShopItem(t,item,0);
 }
 });
-locked.slice(0,2).forEach(item=>{addLockedItem(t,item)});
+locked.slice(0,2).forEach(item=>{addLockedItem(t,item);});
 t.add("").pad(5).row();
 }
 });
 }
 
+function showSerpuloCategory(){
+let t=currentContentTable;
+t.add("[cyan]SERPULO ITEMS").pad(10).row();
+let serpuloItems=[];
+serpuloItems=serpuloItems.concat(shopCategories.serpulo_resources||[]);
+serpuloItems=serpuloItems.concat(shopCategories.serpulo_units||[]);
+let unlocked=serpuloItems.filter(item=>item&&isItemUnlocked(item));
+let locked=serpuloItems.filter(item=>item&&!isItemUnlocked(item));
+if(unlocked.length>0){
+t.add("[lime]UNLOCKED").pad(5).row();
+unlocked.forEach(item=>{
+if(item.type=="resource"){
+addResourceShopItem(t,item,0);
+}else{
+addShopItem(t,item,0);
+}
+});
+}
+if(locked.length>0){
+t.add("[red]LOCKED ITEMS").pad(10).row();
+locked.forEach(item=>{addLockedItem(t,item);});
+}
+if(unlocked.length==0&&locked.length==0){
+t.add("[gray]No items available").pad(10).row();
+}
+}
+
+function showErekirCategory(){
+let t=currentContentTable;
+t.add("[gold]EREKIR ITEMS").pad(10).row();
+let erekirItems=[];
+erekirItems=erekirItems.concat(shopCategories.erekir_resources||[]);
+erekirItems=erekirItems.concat(shopCategories.erekir_units||[]);
+let unlocked=erekirItems.filter(item=>item&&isItemUnlocked(item));
+let locked=erekirItems.filter(item=>item&&!isItemUnlocked(item));
+if(unlocked.length>0){
+t.add("[lime]UNLOCKED").pad(5).row();
+unlocked.forEach(item=>{
+if(item.type=="resource"){
+addResourceShopItem(t,item,0);
+}else{
+addShopItem(t,item,0);
+}
+});
+}
+if(locked.length>0){
+t.add("[red]LOCKED ITEMS").pad(10).row();
+locked.forEach(item=>{addLockedItem(t,item);});
+}
+if(unlocked.length==0&&locked.length==0){
+t.add("[gray]No items available").pad(10).row();
+}
+}
+
 function showCategoryItems(items,title){
 let t=currentContentTable;
 t.add("[accent]"+title).pad(10).row();
-if(!items||items.length==0){t.add("[gray]No items").pad(10).row();return}
-
+if(!items||items.length==0){t.add("[gray]No items").pad(10).row();return;}
 let unlocked=items.filter(item=>item&&isItemUnlocked(item));
 let locked=items.filter(item=>item&&!isItemUnlocked(item));
-
 if(unlocked.length>0){
 unlocked.forEach(item=>{
 if(item.type=="resource"){
@@ -840,12 +1324,10 @@ addShopItem(t,item,0);
 }
 });
 }
-
 if(locked.length>0){
 t.add("[red]LOCKED ITEMS").pad(10).row();
-locked.forEach(item=>{addLockedItem(t,item)});
+locked.forEach(item=>{addLockedItem(t,item);});
 }
-
 if(unlocked.length==0&&locked.length==0){
 t.add("[gray]No items available").pad(10).row();
 }
@@ -854,13 +1336,11 @@ t.add("[gray]No items available").pad(10).row();
 function showFavorites(){
 let t=currentContentTable;
 t.add("[yellow]FAVORITES").pad(10).row();
-
 if(favoriteItems.length==0){
 t.add("[gray]No favorites yet").pad(5).row();
 t.add("[lightgray]Click star on items to add").pad(5).row();
 return;
 }
-
 let allItems=[];
 Object.keys(shopCategories).forEach(cat=>{
 shopCategories[cat].forEach(item=>{
@@ -869,18 +1349,15 @@ allItems.push(item);
 }
 });
 });
-
 PETS.forEach(pet=>{
 if(isFavorite(pet.name)&&isItemUnlocked(pet)){
 allItems.push(pet);
 }
 });
-
 if(allItems.length==0){
 t.add("[gray]All favorites are locked").pad(10).row();
 return;
 }
-
 allItems.forEach(item=>{
 if(item.type=="resource"){
 addResourceShopItem(t,item,0);
@@ -893,80 +1370,275 @@ toggleFavorite(item.name);
 refreshShop();
 }).size(40,40).pad(5);
 let statusText=owned?"[lime]OWNED":"[yellow]"+item.cost+" Coins";
-let txt="[white]"+item.name+"\n[lightgray]"+item.description+"\n"+statusText;
+let evolutionText="";
+if(item.evolution&&owned){
+evolutionText="\n[cyan]Can evolve to "+item.evolution;
+}
+let txt="[white]"+item.name+"\n[lightgray]"+item.description+"\n"+statusText+evolutionText;
 let btn=itemTable.button(txt,()=>{
 if(!owned){
 buyPet(item.name);
+}else if(item.evolution){
+evolvePet(item.name);
 }else{
 Vars.ui.showInfoToast("[yellow]Already owned!",2);
 playSound("pop", 0.5, 0.8);
 }
 }).left().growX().minHeight(85).get();
-if(owned){
+if(owned&&!item.evolution){
 btn.setColor(Color.valueOf("228B22"));
+}else if(owned&&item.evolution){
+btn.setColor(Color.valueOf("4169E1"));
 }
 t.add(itemTable).growX().pad(5).row();
 }else{
 addShopItem(t,item,0);
 }
 });
-}function showPets(){
+}
+
+function showPets(){
 let t=currentContentTable;
-t.add("[lime]PETS").pad(10).row();
+t.add("[lime]PETS & MISSIONS").pad(10).row();
 t.add("[lightgray]Earn coins passively!").pad(5).row();
 t.add("").pad(5).row();
+t.button("[cyan]Pet Missions",()=>{
+playSound("pop", 0.6, 1.0);
+showPetMissionsDialog();
+}).size(300,60).pad(5).row();
+t.add("").pad(5).row();
+let serpuloPets=PETS.filter(pet=>pet.planet=="serpulo"||pet.planet=="both");
+let erekirPets=PETS.filter(pet=>pet.planet=="erekir");
+if(serpuloPets.length>0){
+t.add("[cyan]SERPULO PETS").pad(5).row();
+serpuloPets.forEach(pet=>{
+if(isItemUnlocked(pet)){
+addPetItem(t,pet);
+}else{
+addLockedItem(t,pet);
+}
+});
+t.add("").pad(5).row();
+}
+if(erekirPets.length>0){
+t.add("[gold]EREKIR PETS").pad(5).row();
+erekirPets.forEach(pet=>{
+if(isItemUnlocked(pet)){
+addPetItem(t,pet);
+}else{
+addLockedItem(t,pet);
+}
+});
+}
+}
 
-let unlocked=PETS.filter(pet=>isItemUnlocked(pet));
-let locked=PETS.filter(pet=>!isItemUnlocked(pet));
-
-if(unlocked.length>0){
-unlocked.forEach(pet=>{
+function addPetItem(t,pet){
 let owned=ownedPets.indexOf(pet.name)!==-1;
 let itemTable=new Table();
 itemTable.background(Styles.black6);
-
 itemTable.button(isFavorite(pet.name)?"[yellow]★":"[gray]☆",()=>{
 toggleFavorite(pet.name);
 refreshShop();
 }).size(40,40).pad(5);
-
 let statusText=owned?"[lime]OWNED":"[yellow]"+pet.cost+" Coins";
-let txt="[white]"+pet.name+"\n[lightgray]"+pet.description+"\n"+statusText;
+let evolutionText="";
+if(pet.evolution&&owned){
+let evoUnlocked=isItemUnlocked(PETS.find(p=>p.name==pet.evolution));
+if(evoUnlocked){
+evolutionText="\n[cyan]Click to evolve to "+pet.evolution;
+}else{
+evolutionText="\n[gray]Evolution locked";
+}
+}
+let txt="[white]"+pet.name+"\n[lightgray]"+pet.description+"\n"+statusText+evolutionText;
 let btn=itemTable.button(txt,()=>{
 if(!owned){
 buyPet(pet.name);
+}else if(pet.evolution){
+evolvePet(pet.name);
 }else{
-Vars.ui.showInfoToast("[yellow]Already owned!",2);
+Vars.ui.showInfoToast("[yellow]Max evolution!",2);
 playSound("pop", 0.5, 0.8);
 }
 }).left().growX().minHeight(85).get();
-
-if(owned){
+if(owned&&!pet.evolution){
 btn.setColor(Color.valueOf("228B22"));
+}else if(owned&&pet.evolution){
+btn.setColor(Color.valueOf("4169E1"));
+}
+t.add(itemTable).growX().pad(5).row();
 }
 
-t.add(itemTable).growX().pad(5).row();
+function showPetMissionsDialog(){
+let d=new BaseDialog("PET MISSIONS");
+d.cont.add("[lime]Send pets on missions!").pad(10).row();
+d.cont.add("[lightgray]Earn guaranteed rewards").pad(5).row();
+d.cont.image().color(Color.gold).height(2).growX().pad(5).row();
+let ct=new Table();
+ct.defaults().width(500).pad(5);
+PET_MISSIONS.forEach((mission,i)=>{
+let activeMission=petMissions.find(m=>m.name==mission.name&&!m.completed);
+let completedMission=petMissions.find(m=>m.name==mission.name&&m.completed&&!m.claimed);
+let canStart=ownedPets.length>=mission.requirements.minPets;
+let statusText="";
+if(activeMission){
+let timeLeft=Math.ceil((activeMission.endTime-Date.now())/1000);
+let mins=Math.floor(timeLeft/60);
+let secs=timeLeft%60;
+statusText="[yellow]Active: "+mins+"m "+secs+"s";
+}else if(completedMission){
+statusText="[lime]CLAIM REWARD!";
+}else if(!canStart){
+statusText="[red]Need "+mission.requirements.minPets+" pets";
+}else{
+statusText="[cyan]Start Mission";
+}
+let txt="[white]"+mission.name+"\n[lightgray]"+Math.floor(mission.duration/60)+" min | Reward: "+mission.reward+" coins\n"+statusText;
+ct.button(txt,()=>{
+if(completedMission){
+claimPetMission(mission.name);
+d.hide();
+}else if(!activeMission&&canStart){
+startPetMission(i);
+d.hide();
+}
+}).left().minHeight(85);
+ct.row();
+});
+let sc=new ScrollPane(ct);
+sc.setScrollingDisabled(true,false);
+d.cont.add(sc).grow().pad(10).row();
+d.buttons.button("Close",()=>{d.hide();}).size(150,60);
+d.show();
+}
+
+function showAuction(){
+let t=currentContentTable;
+t.add("[gold]AUCTION HOUSE").pad(10).row();
+t.add("[lightgray]Bid on exclusive items!").pad(5).row();
+t.add("").pad(5).row();
+if(auctionItems.length==0){
+t.add("[gray]No auctions available").pad(10).row();
+t.button("[cyan]Generate Auctions",()=>{
+playSound("switch", 0.7, 1.0);
+generateAuction();
+refreshShop();
+}).size(300,60);
+return;
+}
+auctionItems.forEach(auction=>{
+let timeLeft=auctionEndTimes[auction.id]||0;
+let minutes=Math.floor(timeLeft/60);
+let seconds=timeLeft%60;
+let auctionTable=new Table();
+auctionTable.background(Styles.black6);
+auctionTable.add("[accent]"+auction.item.name).pad(5).row();
+auctionTable.add("[lightgray]"+auction.item.amount+" "+auction.item.description).pad(3).row();
+auctionTable.add("[yellow]Current Bid: "+auction.currentBid).pad(3).row();
+auctionTable.add("[white]Buy Now: [lime]"+auction.buyNowPrice).pad(3).row();
+auctionTable.add("[cyan]Time: "+minutes+"m "+seconds+"s").pad(3).row();
+auctionTable.add("[gray]Highest: "+auction.highestBidder).pad(3).row();
+let btnTable=new Table();
+btnTable.defaults().size(140,50).pad(3);
+btnTable.button("[yellow]Place Bid",()=>{
+playSound("pop", 0.6, 1.0);
+showBidDialog(auction);
+});
+btnTable.button("[lime]Buy Now",()=>{
+buyNowAuction(auction.id);
+});
+auctionTable.add(btnTable).pad(5).row();
+t.add(auctionTable).growX().pad(5).row();
 });
 }
 
-if(locked.length>0){
-t.add("[red]LOCKED PETS").pad(10).row();
-locked.forEach(pet=>{
-let req="[red]🔒 Unlock: Wave "+pet.unlockWave+" & Shop Lvl "+pet.unlockShopLvl;
-let txt="[gray]"+pet.name+"\n[lightgray]"+pet.description+"\n"+req;
-let btn=t.button(txt,()=>{
-Vars.ui.showInfoToast("[red]Locked! Need Wave "+pet.unlockWave,2);
-playSound("pop", 0.5, 0.8);
-}).left().minHeight(85).get();
+function showBidDialog(auction){
+let d=new BaseDialog("PLACE BID");
+d.cont.add("[yellow]"+auction.item.name).pad(10).row();
+d.cont.add("[white]Current Bid: "+auction.currentBid).pad(5).row();
+let minBid=auction.currentBid+Math.floor(auction.startPrice*0.1);
+d.cont.add("[gray]Minimum: "+minBid).pad(5).row();
+let bidField=d.cont.field(minBid+"",txt=>{}).width(300).get();
+d.cont.row();
+d.buttons.button("Cancel",()=>{playSound("pop", 0.5, 0.8);d.hide();}).size(140,60);
+d.buttons.button("[green]Bid",()=>{
+let bidAmount=parseInt(bidField.getText());
+if(!isNaN(bidAmount)){
+placeBid(auction.id,bidAmount);
+d.hide();
+refreshShop();
+}
+}).size(140,60);
+d.show();
+}
+
+function showConverter(){
+let t=currentContentTable;
+t.add("[cyan]RESOURCE CONVERTER").pad(10).row();
+t.add("[lightgray]Exchange resources between planets").pad(5).row();
+t.add("").pad(5).row();
+CONVERTER_RECIPES.forEach((recipe,i)=>{
+if(totalWavesCompleted>=recipe.unlock){
+let txt="[white]"+recipe.rate+" "+recipe.from.toUpperCase()+" → 1 "+recipe.to.toUpperCase()+"\n[lightgray]Convert resources";
+t.button(txt,()=>{
+playSound("pop", 0.6, 1.0);
+showConverterDialog(i);
+}).left().minHeight(85);
+t.row();
+}else{
+let txt="[gray]"+recipe.rate+" "+recipe.from.toUpperCase()+" → 1 "+recipe.to.toUpperCase()+"\n[red]Unlock at wave "+recipe.unlock;
+let btn=t.button(txt,()=>{}).left().minHeight(85).get();
 btn.disabled=true;
 btn.setColor(Color.valueOf("333333"));
 t.row();
+}
 });
 }
 
-if(unlocked.length==0&&locked.length==0){
-t.add("[gray]No pets available").pad(10).row();
+function showConverterDialog(recipeIndex){
+let recipe=CONVERTER_RECIPES[recipeIndex];
+let d=new BaseDialog("CONVERTER");
+d.cont.add("[cyan]"+recipe.from.toUpperCase()+" to "+recipe.to.toUpperCase()).pad(10).row();
+d.cont.add("[lightgray]Rate: "+recipe.rate+":1").pad(5).row();
+d.cont.add("[white]Enter amount of "+recipe.to.toUpperCase()+" to receive:").pad(5).row();
+let amountField=d.cont.field("10",txt=>{}).width(300).get();
+d.cont.row();
+d.buttons.button("Cancel",()=>{d.hide();}).size(140,60);
+d.buttons.button("[green]Convert",()=>{
+let amount=parseInt(amountField.getText());
+if(!isNaN(amount)&&amount>0){
+useConverter(recipeIndex,amount);
+d.hide();
 }
+}).size(140,60);
+d.show();
+}
+
+function showCrafting(){
+let t=currentContentTable;
+t.add("[gold]CRAFTING STATION").pad(10).row();
+t.add("[lightgray]Craft advanced materials").pad(5).row();
+t.add("").pad(5).row();
+CRAFTING_RECIPES.forEach(recipe=>{
+if(totalWavesCompleted>=recipe.unlock){
+let inputText="";
+recipe.inputs.forEach((input,i)=>{
+inputText+=input.amount+" "+input.item;
+if(i<recipe.inputs.length-1)inputText+=" + ";
+});
+let txt="[white]"+recipe.name+"\n[lightgray]"+inputText+"\n[yellow]Cost: "+recipe.cost+" coins";
+t.button(txt,()=>{
+craftItem(recipe.id);
+}).left().minHeight(100);
+t.row();
+}else{
+let txt="[gray]"+recipe.name+"\n[red]Unlock at wave "+recipe.unlock;
+let btn=t.button(txt,()=>{}).left().minHeight(85).get();
+btn.disabled=true;
+btn.setColor(Color.valueOf("333333"));
+t.row();
+}
+});
 }
 
 function addLockedItem(t,item){
@@ -984,43 +1656,35 @@ t.row();
 
 function addResourceShopItem(t,item,discount){
 if(!item||!isItemUnlocked(item))return;
-
 let itemTable=new Table();
 itemTable.background(Styles.black6);
-
 let topRow=new Table();
-let starBtn=topRow.button(isFavorite(item.name)?"[yellow]★":"[gray]☆",()=>{toggleFavorite(item.name);refreshShop()}).size(40,40).pad(5).get();
+let starBtn=topRow.button(isFavorite(item.name)?"[yellow]★":"[gray]☆",()=>{toggleFavorite(item.name);refreshShop();}).size(40,40).pad(5).get();
 topRow.add("[white]"+item.name).left().padLeft(10).growX();
 topRow.add("[lightgray]"+item.baseRate+" = "+item.cost+" coins").right().padRight(10);
 itemTable.add(topRow).growX().pad(5).row();
-
 let qty=getSelectedQuantity(item.name);
 let quantityLabel=null;
 let costLabel=null;
 let bonusLabel=null;
 let onCD=isOnCooldown(item.name);
 let cdTime=getCooldownRemaining(item.name);
-
 let updateLabels=function(){
 let calc=calculateResourcePurchase(item,qty);
 quantityLabel.setText("[accent]"+qty);
-
 let costText="[yellow]"+calc.cost+" Coins";
 if(discount>0){
 let discountedCost=Math.floor(calc.cost*(1-discount/100));
 costText="[gray]"+calc.cost+" [yellow]"+discountedCost+" (-"+Math.floor(discount)+"%)";
 }
 costLabel.setText(costText);
-
 if(calc.bonusAmount>0){
 bonusLabel.setText("[lime]Bonus: +"+calc.bonusAmount+" "+item.description+" "+calc.bonusLabel);
 }else{
 bonusLabel.setText("");
 }
 };
-
 let selectorTable=new Table();
-
 selectorTable.button("[-100]",()=>{
 playSound("pop", 0.4, 0.9);
 qty-=100;
@@ -1028,7 +1692,6 @@ if(qty<10)qty=10;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 selectorTable.button("[-10]",()=>{
 playSound("pop", 0.4, 0.9);
 qty-=10;
@@ -1036,30 +1699,25 @@ if(qty<10)qty=10;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 selectorTable.button("[RESET]",()=>{
 playSound("pop", 0.5, 1.0);
 qty=10;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 quantityLabel=selectorTable.add("[accent]"+qty).pad(3).minWidth(60).get();
-
 selectorTable.button("[+10]",()=>{
 playSound("pop", 0.4, 1.1);
 qty+=10;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 selectorTable.button("[+100]",()=>{
 playSound("pop", 0.4, 1.1);
 qty+=100;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 selectorTable.button("[MAX]",()=>{
 playSound("pop", 0.5, 1.2);
 let maxQty=Math.floor((coins/item.cost)*(item.baseRate||10));
@@ -1068,19 +1726,14 @@ qty=maxQty;
 setSelectedQuantity(item.name,qty);
 updateLabels();
 }).size(70,45).pad(2);
-
 itemTable.add(selectorTable).pad(3).row();
-
 costLabel=itemTable.add("").pad(3).get();
 itemTable.row();
-
 bonusLabel=itemTable.add("").pad(3).get();
 itemTable.row();
-
 if(onCD){
 itemTable.add("[red]Cooldown: "+cdTime+"s").pad(3).row();
 }
-
 let buyBtn=itemTable.button(onCD?"[gray]ON COOLDOWN":"[green]BUY",()=>{
 if(!onCD){
 purchaseResource(item,qty,discount);
@@ -1088,20 +1741,15 @@ updateLabels();
 }
 }).size(200,50).pad(5).get();
 buyBtn.disabled=onCD;
-
 updateLabels();
-
 t.add(itemTable).growX().pad(5).row();
 }
 
 function addShopItem(t,item,discount){
 if(!item||!isItemUnlocked(item))return;
-
 let itemTable=new Table();
 itemTable.background(Styles.black6);
-
-let starBtn=itemTable.button(isFavorite(item.name)?"[yellow]★":"[gray]☆",()=>{toggleFavorite(item.name);refreshShop()}).size(40,40).pad(5).get();
-
+let starBtn=itemTable.button(isFavorite(item.name)?"[yellow]★":"[gray]☆",()=>{toggleFavorite(item.name);refreshShop();}).size(40,40).pad(5).get();
 let basePrice=getItemPrice(item);
 let finalPrice=discount>0?Math.floor(basePrice*(1-discount/100)):basePrice;
 let lvl=getItemLevel(item.name);
@@ -1109,60 +1757,48 @@ let amount=getItemAmount(item);
 let displayName=amount+" "+item.description;
 let onCD=isOnCooldown(item.name);
 let cdTime=getCooldownRemaining(item.name);
-
 let priceText=discount>0?"[gray]"+basePrice+" [yellow]"+finalPrice+" (-"+Math.floor(discount)+"%)":"[yellow]"+finalPrice+" Coins";
 let levelText=lvl>1?" [accent]LVL"+lvl:"";
 let cdText=onCD?" [red]CD:"+cdTime+"s":"";
 let itemText="[white]"+displayName+levelText+"\n[lightgray]"+item.description+"\n"+priceText+cdText;
-
 let btn=itemTable.button(itemText,()=>{
 if(!onCD){
 purchaseItem(item,finalPrice,discount);
 }
 }).left().growX().minHeight(85).get();
-
 btn.disabled=onCD;
 if(onCD)btn.setColor(Color.valueOf("666666"));
 else if(discount>0)btn.setColor(Color.valueOf("FF6B6B"));
-
 t.add(itemTable).growX().pad(5).row();
-}
-
+}// nem
 function purchaseResource(item,quantity,discount){
 let calc=calculateResourcePurchase(item,quantity);
 let finalCost=calc.cost;
-
 if(discount>0){
 finalCost=Math.floor(calc.cost*(1-discount/100));
 }
-
 if(coins<finalCost){
 Vars.ui.showInfoToast("[red]Need "+finalCost+" coins!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 coins-=finalCost;
 totalSpent+=finalCost;
-
 purchaseHistory.unshift({name:item.name,cost:finalCost,time:Date.now()});
 if(purchaseHistory.length>20)purchaseHistory.pop();
-
 if(COOLDOWN_TIMES[item.name])itemCooldowns[item.name]=Date.now();
-
 updateQuestProgress("spend",finalCost);
 updateAchievement("spend",finalCost);
+updateChallengeProgress("spend",finalCost);
 addVIPExp(Math.floor(finalCost/10));
 addShopRep(Math.floor(finalCost/20));
-
 let core=Vars.player.team().core();
 if(core&&item.item){
 core.items.add(item.item,calc.totalAmount);
-let bonusText=calc.bonusAmount>0?" (+"+ calc.bonusAmount+" bonus!)":"";
+let bonusText=calc.bonusAmount>0?" (+"+calc.bonusAmount+" bonus!)":"";
 playSound("coins", 0.7, 1.0);
 Vars.ui.showInfoToast("[green]+"+calc.totalAmount+" "+item.item.name+bonusText,2);
 }
-
 saveCoins();
 refreshShop();
 }
@@ -1178,20 +1814,16 @@ Vars.ui.showInfoToast("[red]On cooldown!",2);
 playSound("pop", 0.5, 0.8);
 return;
 }
-
 coins-=price;
 totalSpent+=price;
-
 purchaseHistory.unshift({name:item.name,cost:price,time:Date.now()});
 if(purchaseHistory.length>20)purchaseHistory.pop();
-
 if(COOLDOWN_TIMES[item.name])itemCooldowns[item.name]=Date.now();
-
 updateQuestProgress("spend",price);
 updateAchievement("spend",price);
+updateChallengeProgress("spend",price);
 addVIPExp(Math.floor(price/10));
 addShopRep(Math.floor(price/20));
-
 executeItemEffect(item);
 playSound("coins", 0.7, 1.0);
 saveCoins();
@@ -1251,27 +1883,14 @@ if(i.effect=="buyCoins"){
 coins+=i.value;
 totalEarned+=i.value;
 Vars.ui.showInfoToast("[gold]+"+i.value+" Coins!",2);
-}else if(i.effect=="spawnArmy"){
-let c=Vars.player.team().core();
-if(c){
-let types=[UnitTypes.flare,UnitTypes.dagger];
-for(let j=0;j<15;j++){
-let a=Mathf.random(360);
-let d=Mathf.random(100,180);
-types[Math.floor(Math.random()*types.length)].spawn(Vars.player.team(),c.x+Angles.trnsx(a,d),c.y+Angles.trnsy(a,d));
-}
-Vars.ui.showInfoToast("[gold]Army spawned!",2);
-}
 }
 }
 
 function openRewards(){
 if(currentShopDialog)currentShopDialog.hide();
-
 let d=new BaseDialog("REWARDS");
 settingsDialog=d;
 d.cont.clear();
-
 let topBar=new Table();
 topBar.background(Styles.black8);
 topBar.add("[gold]VIP "+vipLevel).pad(5);
@@ -1280,28 +1899,26 @@ topBar.add("[cyan]Wave: "+totalWavesCompleted).pad(5);
 topBar.add().growX();
 topBar.add("[green]Coins: "+coins).pad(5);
 d.cont.add(topBar).growX().pad(5).row();
-
 let tb=new Table();
 tb.defaults().size(130,55).pad(3);
-tb.button("Quests",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="quests";refreshRewardsTab()}).checked(b=>currentSettingsTab=="quests");
-tb.button("Achievements",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="achievements";refreshRewardsTab()}).checked(b=>currentSettingsTab=="achievements");
+tb.button("Quests",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="quests";refreshRewardsTab();}).checked(b=>currentSettingsTab=="quests");
+tb.button("Achievements",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="achievements";refreshRewardsTab();}).checked(b=>currentSettingsTab=="achievements");
 tb.row();
-tb.button("Work",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="work";refreshRewardsTab()}).checked(b=>currentSettingsTab=="work");
-tb.button("Login",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="login";refreshRewardsTab()}).checked(b=>currentSettingsTab=="login");
+tb.button("Challenges",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="challenges";refreshRewardsTab();}).checked(b=>currentSettingsTab=="challenges");
+tb.button("Work",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="work";refreshRewardsTab();}).checked(b=>currentSettingsTab=="work");
+tb.row();
+tb.button("Login",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="login";refreshRewardsTab();}).checked(b=>currentSettingsTab=="login");
+tb.button("Milestones",()=>{playSound("pop", 0.5, 1.0);currentSettingsTab="milestones";refreshRewardsTab();}).checked(b=>currentSettingsTab=="milestones");
 d.cont.add(tb).growX().pad(5).row();
-
 d.cont.image().color(Color.gold).height(3).growX().pad(5).row();
-
 let ct=new Table();
 currentContentTable=ct;
 refreshRewardsTab();
 let sc=new ScrollPane(ct);
 sc.setScrollingDisabled(true,false);
 d.cont.add(sc).grow().pad(10).row();
-
-d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide()}).size(150,60);
-
-d.hidden(()=>{settingsDialog=null;currentContentTable=null;currentSettingsTab="quests"});
+d.buttons.button("Close",()=>{playSound("switch", 0.6, 0.9);d.hide();}).size(150,60);
+d.hidden(()=>{settingsDialog=null;currentContentTable=null;currentSettingsTab="quests";});
 d.show();
 }
 
@@ -1309,26 +1926,26 @@ function refreshRewardsTab(){
 if(!currentContentTable)return;
 currentContentTable.clear();
 currentContentTable.defaults().width(500).minHeight(85).pad(5);
-
 switch(currentSettingsTab){
 case"quests":showQuestsTab();break;
 case"achievements":showAchievementsTab();break;
+case"challenges":showChallengesTab();break;
 case"work":showWorkTab();break;
 case"login":showLoginTab();break;
+case"milestones":showMilestonesTab();break;
 }
 }
 
 function showQuestsTab(){
 let t=currentContentTable;
 t.add("[yellow]DAILY QUESTS").pad(10).row();
-if(dailyQuests.length==0){t.add("[red]No quests").pad(10).row();return}
-
+if(dailyQuests.length==0){t.add("[red]No quests").pad(10).row();return;}
 dailyQuests.forEach(q=>{
 let p=questProgress[q.id];
 let done=p.completed;
 let claim=p.claimed;
 let txt="[white]"+q.name+" +"+q.reward+" Coins\n[lightgray]"+q.desc+"\n"+(claim?"[gray]CLAIMED":(done?"[lime]TAP TO CLAIM":"[accent]"+p.current+"/"+q.target));
-let btn=t.button(txt,()=>{if(done&&!claim){playSound("pop", 0.6, 1.0);claimQuestReward(q.id);refreshRewardsTab()}}).left().minHeight(85).get();
+let btn=t.button(txt,()=>{if(done&&!claim){playSound("pop", 0.6, 1.0);claimQuestReward(q.id);refreshRewardsTab();}}).left().minHeight(85).get();
 btn.disabled=claim||!done;
 if(claim)btn.setColor(Color.valueOf("444444"));
 else if(done)btn.setColor(Color.valueOf("4CAF50"));
@@ -1339,13 +1956,12 @@ t.row();
 function showAchievementsTab(){
 let t=currentContentTable;
 t.add("[gold]ACHIEVEMENTS").pad(10).row();
-
 ACHIEVEMENTS.forEach(a=>{
 let p=achievementProgress[a.id];
 let done=p.current>=a.target;
 let claim=p.claimed;
 let txt="[white]"+a.name+" +"+a.reward+" Coins\n[lightgray]"+a.desc+"\n"+(claim?"[gray]CLAIMED":(done?"[lime]TAP TO CLAIM":"[accent]"+p.current+"/"+a.target));
-let btn=t.button(txt,()=>{if(done&&!claim){playSound("pop", 0.6, 1.0);claimAchievement(a.id);refreshRewardsTab()}}).left().minHeight(85).get();
+let btn=t.button(txt,()=>{if(done&&!claim){playSound("pop", 0.6, 1.0);claimAchievement(a.id);refreshRewardsTab();}}).left().minHeight(85).get();
 btn.disabled=claim||!done;
 if(claim)btn.setColor(Color.valueOf("444444"));
 else if(done)btn.setColor(Color.valueOf("FFD700"));
@@ -1353,16 +1969,36 @@ t.row();
 });
 }
 
+function showChallengesTab(){
+let t=currentContentTable;
+t.add("[cyan]DAILY CHALLENGES").pad(10).row();
+t.add("[lightgray]Reset every 24 hours").pad(5).row();
+t.add("").pad(5).row();
+DAILY_CHALLENGES.forEach(challenge=>{
+let progress=challengeProgress[challenge.name];
+if(!progress){
+progress={current:0,completed:false,claimed:false};
+challengeProgress[challenge.name]=progress;
+}
+let done=progress.completed;
+let claim=progress.claimed;
+let txt="[white]"+challenge.name+" +"+challenge.reward+" Coins\n[lightgray]"+challenge.desc+"\n"+(claim?"[gray]CLAIMED":(done?"[lime]TAP TO CLAIM":"[accent]"+progress.current+"/"+challenge.target));
+let btn=t.button(txt,()=>{if(done&&!claim){playSound("pop", 0.6, 1.0);claimChallenge(challenge.name);refreshRewardsTab();}}).left().minHeight(85).get();
+btn.disabled=claim||!done;
+if(claim)btn.setColor(Color.valueOf("444444"));
+else if(done)btn.setColor(Color.valueOf("00CED1"));
+t.row();
+});
+}
+
 function showWorkTab(){
 let t=currentContentTable;
 t.add("[cyan]DAILY WORK").pad(10).row();
-
 if(dailyWorkDone){
 t.add("[yellow]Work completed!").pad(10).row();
 t.add("[lightgray]Come back tomorrow").pad(5).row();
 return;
 }
-
 if(currentWorkActivity){
 t.add("[yellow]Current: "+currentWorkActivity.name).pad(10).row();
 t.add("[accent]Progress: "+workProgress+"/"+currentWorkActivity.progress).pad(5).row();
@@ -1383,11 +2019,10 @@ refreshRewardsTab();
 t.row();
 return;
 }
-
 t.add("[accent]CHOOSE A TASK").pad(5).row();
 WORK_ACTIVITIES.forEach((activity,i)=>{
 let txt="[white]"+activity.name+"\n[lightgray]"+activity.desc+"\n[yellow]Reward: "+activity.reward+" Coins";
-t.button(txt,()=>{playSound("pop", 0.6, 1.0);startWorkActivity(i);refreshRewardsTab()}).left().minHeight(85);
+t.button(txt,()=>{playSound("pop", 0.6, 1.0);startWorkActivity(i);refreshRewardsTab();}).left().minHeight(85);
 t.row();
 });
 }
@@ -1397,17 +2032,15 @@ let t=currentContentTable;
 t.add("[lime]DAILY LOGIN").pad(10).row();
 t.add("[accent]Streak: "+loginStreak+" days").pad(5).row();
 t.add("").pad(5).row();
-
 if(loginStreak>0&&!loginRewardClaimed){
 let reward=LOGIN_REWARDS[Math.min(loginStreak-1,9)]||10;
 reward=Math.floor(reward*getVIPMultiplier());
-t.button("[green]CLAIM DAY "+loginStreak+"\n[yellow]+"+reward+" Coins",()=>{playSound("pop", 0.7, 1.0);claimDailyLoginReward();refreshRewardsTab()}).size(400,80).get();
+t.button("[green]CLAIM DAY "+loginStreak+"\n[yellow]+"+reward+" Coins",()=>{playSound("pop", 0.7, 1.0);claimDailyLoginReward();refreshRewardsTab();}).size(400,80).get();
 t.row();
 t.add("").pad(10).row();
 }else if(loginRewardClaimed){
 t.add("[yellow]Today's reward claimed!").pad(10).row();
 }
-
 t.add("[yellow]REWARDS:").pad(5).row();
 LOGIN_REWARDS.forEach((r,i)=>{
 let day=i+1;
@@ -1417,18 +2050,33 @@ t.add(status).left().pad(3).row();
 });
 }
 
+function showMilestonesTab(){
+let t=currentContentTable;
+t.add("[gold]MILESTONES").pad(10).row();
+t.add("[lightgray]Based on total coins earned").pad(5).row();
+t.add("[accent]Total Earned: "+totalEarned).pad(5).row();
+t.add("").pad(5).row();
+milestoneRewards.forEach(m=>{
+let canClaim=totalEarned>=m.milestone&&!m.claimed;
+let txt="[white]"+m.description+"\n[yellow]Reward: "+m.reward+" coins\n"+(m.claimed?"[gray]CLAIMED":(canClaim?"[lime]TAP TO CLAIM":"[accent]"+totalEarned+"/"+m.milestone));
+let btn=t.button(txt,()=>{if(canClaim){playSound("pop", 0.7, 1.0);claimMilestone(m.milestone);refreshRewardsTab();}}).left().minHeight(85).get();
+btn.disabled=m.claimed||!canClaim;
+if(m.claimed)btn.setColor(Color.valueOf("444444"));
+else if(canClaim)btn.setColor(Color.valueOf("FFD700"));
+t.row();
+});
+}
+
 function showRedeemDialog(){
 let d=new BaseDialog("REDEEM CODE");
 d.cont.add("[yellow]Enter Code").pad(10).row();
 let codeField=d.cont.field("",txt=>{}).width(350).get();
 d.cont.row();
-
-d.buttons.button("Cancel",()=>{playSound("pop", 0.5, 0.8);d.hide()}).size(140,60);
+d.buttons.button("Cancel",()=>{playSound("pop", 0.5, 0.8);d.hide();}).size(140,60);
 d.buttons.button("[green]Redeem",()=>{
 let code=codeField.getText().trim();
-if(code.length>0){playSound("pop", 0.6, 1.0);redeemCode(code);d.hide();if(currentShopDialog)refreshShop()}
+if(code.length>0){playSound("pop", 0.6, 1.0);redeemCode(code);d.hide();if(currentShopDialog)refreshShop();}
 }).size(140,60);
-
 d.show();
 }
 
@@ -1449,7 +2097,18 @@ highestBidder:a.highestBidder
 }
 });
 }
-
+let cleanPetMissions=[];
+if(petMissions&&petMissions.length>0){
+petMissions.forEach(m=>{
+cleanPetMissions.push({
+name:m.name,
+reward:m.reward,
+endTime:m.endTime,
+completed:m.completed,
+claimed:m.claimed
+});
+});
+}
 Vars.dataDirectory.child("shop-coins.json").writeString(JSON.stringify({
 coins:coins,
 totalSpent:totalSpent,
@@ -1481,7 +2140,12 @@ totalKills:totalKills,
 totalBuildings:totalBuildings,
 cleanAuctionItems:cleanAuctionItems,
 auctionEndTimes:auctionEndTimes,
-auctionBids:auctionBids
+auctionBids:auctionBids,
+currentPlanet:currentPlanet,
+petMissions:cleanPetMissions,
+challengeProgress:challengeProgress,
+lastChallengeReset:lastChallengeReset,
+milestoneRewards:milestoneRewards
 }));
 }catch(e){}
 }
@@ -1521,7 +2185,15 @@ totalKills=d.totalKills||0;
 totalBuildings=d.totalBuildings||0;
 auctionEndTimes=d.auctionEndTimes||{};
 auctionBids=d.auctionBids||{};
-
+currentPlanet=d.currentPlanet||"serpulo";
+challengeProgress=d.challengeProgress||{};
+lastChallengeReset=d.lastChallengeReset||0;
+if(d.milestoneRewards){
+milestoneRewards=d.milestoneRewards;
+}
+if(d.petMissions){
+petMissions=d.petMissions;
+}
 auctionItems=[];
 if(d.cleanAuctionItems&&d.cleanAuctionItems.length>0){
 d.cleanAuctionItems.forEach(clean=>{

@@ -214,8 +214,7 @@ More updates are planned, including:
 - UI improvements
 - New categories and unlocks
 - Trading system
-- Seasonal events
-
+- Erekir Support
 Stay tuned — the shop will keep growing with every update!
 
 ## 📥 Installation

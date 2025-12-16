@@ -6,201 +6,251 @@ author: "[#00D4FF[]]SamielXD[[]]"
 
 description:
   '''
-[accent[]]ShopSystemMod v1.2 - Your Personal In-Game Economy![[]]
+[accent[]]ShopSystemMod v1.3 - Your Personal In-Game Economy![[]]
 
-[white[]]Hey there! Ever wanted to buy resources mid-game or reward yourself for surviving tough waves? This mod adds a complete coin-based shop system to Mindustry. Think of it as your personal marketplace that grows with you as you play![[]]
+[white[]]🎮 NEW: Press K key or type /shop to access the shop on PC! Mobile users tap the SHOP button![[]]
 
-[yellow[]]⚠️ Heads Up: This is an updated release! You might run into some bugs or weird behavior. If something breaks, just let me know. The save system should keep your coins safe though![[]]
+[yellow[]]⚠️ MAJOR UPDATE v1.3: Full Erekir Support, PC Compatibility, Pet Evolution, and tons of new features![[]]
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[gold[]]📋 CHANGELOG - What's New in v1.2:[[]]
+[gold[]]📋 CHANGELOG - What's New in v1.3:[[]]
 
-[lime[]]✨ New Features:[[]]
-  • Custom Sound Effects! Now with satisfying audio feedback
-  • Better UI positioning - Shop button moved to HUD
-  • Improved button click sounds throughout the shop
-  • Enhanced purchase feedback with audio cues
-  • 3 New Pets added to the collection!
+[cyan[]]🎮 PC & Mobile Support:[[]]
+  • Press K key to open shop instantly (PC)
+  • Type /shop in chat to access shop
+  • Touch-optimized UI for mobile
+  • Works seamlessly on both platforms!
 
-[cyan[]]🔊 Sound Effects Added:[[]]
-  • pop.ogg - UI clicks and interactions
-  • switch.ogg - Menu transitions and level ups
-  • coins.ogg - Earning and spending coins
+[lime[]]🪐 Full Erekir Support:[[]]
+  • 4 Erekir Resources: Beryllium, Tungsten, Oxide, Carbide
+  • 3 Erekir Units: Stell, Locus, Merui
+  • Separate Serpulo and Erekir categories
+  • Auto planet detection
+  • Resource Converter for cross-planet trading
 
-[white[]]🐾 Pet Updates:[[]]
-  • Renamed "Coin Cat" to "Cat"
-  • Renamed "Gold Dog" to "Dog"
-  • Renamed "Diamond Bird" to "Bird"
-  • Renamed "Mega Dragon" to "Dragon"
-  • Added "Fox" - 25 coins/min passive earner
-  • Added "Wolf" - 40 coins/min pack hunter
-  • Added "Loyal Protector" - 70 coins/min ultimate companion
+[white[]]🐾 Pet System Overhaul:[[]]
+  • Real animal names: Cat, Dog, Eagle, Fox, Bear, Panther, etc.
+  • Pet Evolution System - Upgrade pets to stronger versions!
+  • Cat → Lion, Dog → Wolf, Eagle → Phoenix
+  • 9 NEW pets added (13 total now!)
+  • Erekir Pets: Cobra, Hawk, Tiger
+  • Max income: 369 coins/min (up from 164!)
 
-[white[]]🔧 Improvements:[[]]
-  • Cleaner UI layout and positioning
-  • Better sound feedback for all actions
-  • Smoother menu transitions
-  • More satisfying purchase experience
+[cyan[]]✨ New Features:[[]]
+  • Pet Missions - Send pets for guaranteed rewards (4 types)
+  • Daily Challenges - 4 challenges, 80-120 coins each
+  • Milestone Rewards - 6 tiers, up to 3000 coins
+  • Crafting System - Craft Surge Alloy, Phase Fabric, Plastanium
+  • Resource Converter - Convert Serpulo ↔ Erekir resources
+  • Better UI with organized categories
+
+[white[]]🏆 New Rewards:[[]]
+  • 3 New Achievements
+  • 6 Milestone Rewards
+  • 4 Pet Mission Types
+  • New Redeem Codes
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [lime[]]💰 What's This All About?[[]]
 
-Basically, you earn coins by playing the game normally - killing enemies, completing waves, that sort of thing. Then you can spend those coins in the shop to buy resources, spawn units, or use special abilities. The more you play, the more stuff unlocks!
+Earn coins by playing the game - killing enemies, completing waves, doing daily tasks. Spend those coins in the shop to buy resources, spawn units, or use special abilities. Now with full support for both Serpulo and Erekir!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [cyan[]]🛒 The Shop Has:[[]]
 
-[white[]]Resources[[]] → Copper, Lead, Coal, Titanium, and Thorium
-[white[]]Units[[]] → Instant Flare, Dagger, and Mace squads when you need backup
-[white[]]Boosts[[]] → Skip annoying waves or heal all your buildings at once
-[white[]]Pets[[]] → Cute little guys that earn coins for you while you play
-[white[]]Auction House[[]] → Bid on exclusive items like Plastanium, Phase Fabric, and Surge Alloy
-[white[]]Favorites[[]] → Star your favorite items for quick access
-
-Each item is locked at first. You'll unlock new stuff as you complete waves and level up your shop. It keeps things interesting!
+[white[]]Serpulo Resources[[]] → Copper, Lead, Coal, Titanium, Thorium
+[white[]]Erekir Resources[[]] → Beryllium, Tungsten, Oxide, Carbide
+[white[]]Serpulo Units[[]] → Flare, Dagger, Mace squads
+[white[]]Erekir Units[[]] → Stell, Locus, Merui squads
+[white[]]Boosts[[]] → Skip waves or heal all buildings
+[white[]]Pets[[]] → 13 pets with evolution system
+[white[]]Pet Missions[[]] → Send pets for guaranteed rewards
+[white[]]Auction House[[]] → Bid on exclusive items
+[white[]]Converter[[]] → Exchange Serpulo ↔ Erekir resources
+[white[]]Crafting[[]] → Craft advanced materials
+[white[]]Favorites[[]] → Star your favorite items
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [gold[]]⭐ VIP System[[]]
 
-The more you spend, the more VIP EXP you get. Level up your VIP status and you'll earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything. Pretty solid benefits!
+The more you spend, the more VIP EXP you get. Level up your VIP status and earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[lime[]]🎮 How Do I Use This Thing?[[]]
+[lime[]]🎮 How Do I Use This?[[]]
 
-Super simple:
-1. Click the "SHOP" button on the right side of your screen
-2. Browse categories and buy whatever you want!
-3. Check out Stats, Rewards, and Redeem Codes
-4. Listen for satisfying sound effects when you interact!
+[cyan[]]PC:[[]]
+1. Press K key anywhere
+2. Type /shop in chat
+3. Click Shop button in pause menu
 
-Your coins are shown in the UI along with your VIP level and Shop level.
+[cyan[]]Mobile:[[]]
+1. Tap the SHOP [K] button on the right side of your screen
+
+Your coins, VIP level, and Shop level are always shown in the UI!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [cyan[]]📈 Ways to Earn Coins:[[]]
 
 [white[]]Playing the game:[[]]
-  • Each enemy killed = 1 coin (multiplied by your VIP level)
-  • Each wave completed = 5 coins (also multiplied)
+  • Each enemy killed = 1 coin (× VIP level)
+  • Each wave completed = 5 coins (× VIP level)
 
 [white[]]Daily stuff:[[]]
-  • Daily Quests → Easy tasks like "kill 30 enemies" for 15-25 coins
-  • Daily Work → Pick a job (wave defense, hunting, building) for 30-50 coins
-  • Daily Login → Just log in each day for rewards up to 150 coins!
+  • Daily Quests → 15-25 coins
+  • Daily Challenges → 80-120 coins each (4 challenges)
+  • Daily Work → 30-50 coins
+  • Daily Login → Up to 150 coins
 
 [white[]]Long-term:[[]]
-  • Achievements → Big milestones that give 50-100 coins
-  • Pets → They earn 2-70 coins per minute automatically
-  • Auction House → Bid smart and win exclusive items!
+  • Achievements → 50-300 coins
+  • Milestone Rewards → 50-3000 coins
+  • Pets → 2-100 coins per minute automatically
+  • Pet Missions → 40-450 coins per mission
+  • Auction House → Bid smart and win!
 
 [white[]]Secret stuff:[[]]
-  • Flash Sales → Random discounts pop up (up to 50% off!)
-  • Redeem Codes → I hid some codes around... find them for free coins!
+  • Flash Sales → Up to 50% off random items
+  • Redeem Codes → Hidden codes for free coins!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[yellow[]]🐾 Pet System - All 7 Companions:[[]]
+[yellow[]]🐾 Pet System - All 13 Pets with Evolution:[[]]
 
-Pets are basically passive income generators. Buy one, and it'll earn coins for you every minute - even when you're not doing anything! We've expanded the pet roster and renamed them for simplicity:
+[cyan[]]Serpulo Pets:[[]]
+  [white[]]Cat[[]] → Lion (2 → 30 coins/min) [Wave 3]
+  [white[]]Dog[[]] → Wolf (3 → 25 coins/min) [Wave 5]
+  [white[]]Eagle[[]] → Phoenix (5 → 40 coins/min) [Wave 10]
+  [white[]]Fox[[]] → Kitsune (8 coins/min) [Wave 15]
+  [white[]]Bear[[]] → Grizzly (12 coins/min) [Wave 20]
+  [white[]]Panther[[]] → Jaguar (18 coins/min) [Wave 25]
 
-  [white[]]Cat[[]] → Your starter pet, earns 2 coins/min (Wave 5 & Shop Lvl 1)
-  [white[]]Dog[[]] → The reliable choice, 4 coins/min (Wave 10 & Shop Lvl 2)
-  [white[]]Bird[[]] → Getting fancy, 8 coins/min (Wave 15 & Shop Lvl 3)
-  [white[]]Dragon[[]] → Strong earner, 15 coins/min (Wave 25 & Shop Lvl 5)
-  [white[]]Fox[[]] → Fast earner, 25 coins/min (Wave 35 & Shop Lvl 7)
-  [white[]]Wolf[[]] → Pack hunter, 40 coins/min (Wave 45 & Shop Lvl 9)
-  [white[]]Loyal Protector[[]] → The ultimate companion, 70 coins/min (Wave 60 & Shop Lvl 12)
+[gold[]]Erekir Pets:[[]]
+  [white[]]Cobra[[]] → Python (15 coins/min) [Wave 22]
+  [white[]]Hawk[[]] → Falcon (22 coins/min) [Wave 28]
+  [white[]]Tiger[[]] (35 coins/min) [Wave 38]
 
-They're expensive but worth it in the long run! At max collection, you'll earn 164 coins per minute passively!
+[accent[]]Legendary:[[]]
+  [white[]]Dragon[[]] (100 coins/min) [Wave 60]
+
+[lime[]]Max passive income: 369 coins/min![[]]
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]🚀 Pet Missions - Guaranteed Rewards:[[]]
+
+  [white[]]Scout Mission[[]] → 2 min, 40 coins (Need 1 pet)
+  [white[]]Resource Hunt[[]] → 4 min, 90 coins (Need 2 pets)
+  [white[]]Treasure Search[[]] → 8 min, 200 coins (Need 3 pets)
+  [white[]]Epic Journey[[]] → 15 min, 450 coins (Need 5 pets)
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [gold[]]🏛️ Auction House[[]]
 
-The Auction House offers exclusive high-tier items you can't buy in the regular shop:
+Bid on exclusive high-tier items:
   • Plastanium (50 units)
   • Phase Fabric (30 units)
   • Surge Alloy (20 units)
+  • Carbide (40 units) - Erekir exclusive!
 
-You can either place bids and wait for the auction to end, or use "Buy Now" to get it instantly. Auctions run for 5 minutes and generate automatically!
-
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
-
-[white[]]🔒 The Lock System (Important!)[[]]
-
-Not everything is available from the start. Items unlock based on:
-  • How many waves you've completed
-  • Your shop level (which increases as you spend coins)
-
-When you see a locked item, it'll show you exactly what you need to unlock it. Like "🔒 Wave 5 & Shop Lvl 1". This prevents you from getting overwhelmed at the start and gives you goals to work toward.
+Place bids or use "Buy Now" to get items instantly!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[cyan[]]💡 Some Tips From Testing:[[]]
+[cyan[]]🔄 Resource Converter:[[]]
 
-• Do your daily quests! They're the easiest way to get coins early on
-• Daily work can only be done once per day, so pick wisely
-• Don't forget to claim your daily login reward
-• Save up for pets if you're playing long sessions - they pay for themselves!
-• With all 7 pets, you earn 164 coins per minute passively
-• Some items have cooldowns - the shop will show you when
-• Flash sales happen randomly, so check back often
-• Your progress auto-saves every 60 seconds
-• Star your favorite items for quick access!
-• Check the auction house regularly for exclusive items
-• Use bulk buying for resources to get bonus items!
-• Enjoy the new sound effects - they make shopping way more satisfying!
+Exchange resources between planets at fixed rates:
+  • Copper ↔ Beryllium (2:1)
+  • Lead ↔ Tungsten (3:1)
+  • Titanium ↔ Oxide (4:1)
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[gold[]]⚒️ Crafting System:[[]]
+
+Craft advanced materials:
+  • Surge Alloy (100 Copper + 100 Lead + 50 Titanium + 200 coins)
+  • Phase Fabric (50 Thorium + 80 Titanium + 150 coins)
+  • Plastanium (60 Titanium + 40 Coal + 100 coins)
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[white[]]🔒 The Lock System:[[]]
+
+Items unlock based on:
+  • Waves completed
+  • Shop level
+
+Locked items show exactly what you need to unlock them!
+
+[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+
+[cyan[]]💡 Pro Tips:[[]]
+
+• Do daily quests and challenges for easy coins
+• Complete pet missions for guaranteed rewards
+• Save up for pets - they pay for themselves!
+• With all 13 pets, earn 369 coins/min passively
+• Evolve your pets for even better earnings
+• Use the Resource Converter to get planet-specific items
+• Craft advanced materials when you have extra resources
+• Check the auction house regularly
+• Use bulk buying for bonus items!
+• Press K on PC for instant shop access!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [red[]]⚠️ Known Issues:[[]]
 
-• Occasionally the work system might not track progress (just cancel and restart)
-• If you spam-click items super fast, weird things can happen
-• The UI might look weird on very small screens
-• Some achievements might not trigger immediately (give it a sec)
-• Sound effects require the sound files in your mod's sounds/ folder
+• Work system might not track progress sometimes (just restart it)
+• Spam-clicking can cause weird behavior
+• UI might look odd on very small screens
+• Pet missions may not update immediately
+• Sound effects need sound files in sounds/ folder
+• daily login not working properly
 
-Nothing game-breaking, but if you find something broken, hit me up!
+Nothing game-breaking!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[lime[]]📊 Current Content (v1.2):[[]]
+[lime[]]📊 Current Content (v1.3):[[]]
 
-5 Resources • 3 Units • 2 Boosts • 7 Pets (3 NEW!) • 3 Auction Items
-3 Daily Quests • 3 Work Activities • 10 Login Rewards • 3 Achievements
-13+ Redeem Codes • Flash Sales System • VIP Levels 1-5
-Auction House • Favorites System • Bulk Buying with Bonuses
-Advanced Statistics Tracking • 3 Custom Sound Effects
-
-[yellow[]]More stuff coming in future updates! This is just the foundation.[[]]
+9 Resources (5 Serpulo + 4 Erekir) • 6 Unit types • 2 Boosts
+13 Pets with Evolution • 4 Pet Missions • 4 Auction Items
+3 Daily Quests • 4 Daily Challenges • 3 Work Activities
+10 Login Rewards • 6 Achievements • 6 Milestone Rewards
+15+ Redeem Codes • Flash Sales • VIP Levels 1-5
+Auction House • Favorites • Bulk Buying • Resource Converter
+Crafting System • PC Keybind (K) • Chat Command (/shop)
+Advanced Statistics • 3 Custom Sound Effects
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
 [cyan[]]🔊 Sound Files Needed:[[]]
 
-Make sure you have these sound files in your mod's sounds/ folder:
-  • pop.ogg - Button clicks and UI interactions
-  • switch.ogg - Menu switching and special events
-  • coins.ogg - Coin earning and spending sounds
+Place these in your mod's sounds/ folder:
+  • pop.ogg - UI clicks
+  • switch.ogg - Menu transitions
+  • coins.ogg - Coin sounds
 
-Without these files, the mod will still work but won't have sound effects!
+Mod works without them but sounds are better!
 
 [accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
 
-[white[]]That's about it! The shop should be pretty intuitive once you open it. If you get stuck or confused, everything's labeled and the locked items tell you what you need.[[]]
+[white[]]That's it! Press K (PC) or tap SHOP (Mobile) to start building your economy![[]]
 
 [gray[]]Have fun, Hope you enjoy my mod! 💰[[]]
 
 [white[]]- SamielXD[[]]
   '''
 
-version: "1.2"
+version: "1.3"
 
 minGameVersion: 147
 

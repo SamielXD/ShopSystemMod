@@ -394,3 +394,4 @@ Found a bug? [Open an Issue](https://github.com/SamielXD/ShopSystemMod/issues) w
 If you enjoy the mod, leaving a star ⭐ on the repo helps a lot and keeps development going. Thanks for checking it out, and have fun building your in-game economy on both Serpulo and Erekir!!
 
 goal: 8/10 star
+goal: 26/50 dl

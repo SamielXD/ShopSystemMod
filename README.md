@@ -395,5 +395,5 @@ If you enjoy the mod, leaving a star ⭐ on the repo helps a lot and keeps devel
 
 ## 🎉 Goals
 - Goal: stars 8/10
-- Goal: downloads 28/35
+- Goal: downloads 33/35
 - Goal: releases 4/5

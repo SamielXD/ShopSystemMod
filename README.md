@@ -54,7 +54,6 @@ We apologize for the inconvenience, but this ensures a more stable and secure ex
 - ❌ Removed Pet Evolution (too complex)
 - ❌ Removed Daily Login (buggy)
 - ✅ Pets back to simple names
-- ✅ All v1.3 features kept
 
 ---
 
@@ -193,8 +192,6 @@ EPICWIN → 200 coins
 VIPACCESS → 300 coins
 MEGABONUS → 500 coins
 LEGENDARY → 1000 coins
-BLESSED2024 → 150 coins
-GIFT888 → 250 coins
 SamielXD15 → 15 coins
 NEWBIE10 → 10 coins
 START25 → 25 coins
@@ -325,12 +322,6 @@ If you enjoy the mod, leaving a star ⭐ on the repo helps a lot and keeps devel
 - Goal: stars 9/10
 - Goal: downloads 39/45
 - Goal: releases 4/5
-
----
-
-## 📜 License
-
-This mod is free to use and modify for personal use. Please credit the original author if you share modified versions.
 
 ---
 

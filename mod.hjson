@@ -1,261 +1,338 @@
-name: "shopsystem"
+# ShopSystemMod v1.4 🛒💰
 
-displayName: "Shop System"
+A complete coin-based in-game economy system for Mindustry with **Erekir support**, **PC compatibility**, **Prestige System**, **Cosmetics**, and **Offline Earnings**!
 
-author: "[#00D4FF[]]SamielXD[[]]"
+---
 
-description:
-  '''
-[accent[]]ShopSystemMod v1.3 - Your Personal In-Game Economy![[]]
+## 🚨 IMPORTANT NOTICE - v1.4 UPDATE
 
-[white[]]🎮 NEW: Press K key or type /shop to access the shop on PC! Mobile users tap the SHOP button![[]]
+**⚠️ THIS UPDATE WILL RESET YOUR PROGRESS! ⚠️**
 
-[yellow[]]⚠️ MAJOR UPDATE v1.3: Full Erekir Support, PC Compatibility, Pet Evolution, and tons of new features![[]]
+Due to the new **tamper-resistant save system**, all previous save files are incompatible and will be reset to defaults. This is a one-time reset necessary to implement security features that protect against save file editing and corruption.
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+**Why the reset?**
+- New hash-based save validation
+- Enhanced data integrity checks
+- Protection against tampering
+- Better error handling
 
-[gold[]]📋 CHANGELOG - What's New in v1.3:[[]]
+We apologize for the inconvenience, but this ensures a more stable and secure experience!
 
-[cyan[]]🎮 PC & Mobile Support:[[]]
-  • Press K key to open shop instantly (PC)
-  • Type /shop in chat to access shop
-  • Touch-optimized UI for mobile
-  • Works seamlessly on both platforms!
+---
 
-[lime[]]🪐 Full Erekir Support:[[]]
-  • 4 Erekir Resources: Beryllium, Tungsten, Oxide, Carbide
-  • 3 Erekir Units: Stell, Locus, Merui
-  • Separate Serpulo and Erekir categories
-  • Auto planet detection
-  • Resource Converter for cross-planet trading
+## 🌟 What's New in v1.4
 
-[white[]]🐾 Pet System Overhaul:[[]]
-  • Real animal names: Cat, Dog, Eagle, Fox, Bear, Panther, etc.
-  • Pet Evolution System - Upgrade pets to stronger versions!
-  • Cat → Lion, Dog → Wolf, Eagle → Phoenix
-  • 9 NEW pets added (13 total now!)
-  • Erekir Pets: Cobra, Hawk, Tiger
-  • Max income: 369 coins/min (up from 164!)
+### 🔐 Tamper-Resistant Save System
+- Hash validation detects edited save files
+- Auto-resets corrupted/tampered saves
+- Value clamping prevents impossible stats
+- Better error recovery
 
-[cyan[]]✨ New Features:[[]]
-  • Pet Missions - Send pets for guaranteed rewards (4 types)
-  • Daily Challenges - 4 challenges, 80-120 coins each
-  • Milestone Rewards - 6 tiers, up to 3000 coins
-  • Crafting System - Craft Surge Alloy, Phase Fabric, Plastanium
-  • Resource Converter - Convert Serpulo ↔ Erekir resources
-  • Better UI with organized categories
+### 🌟 Prestige System
+- Reset progress for permanent bonuses
+- Earn Prestige Points (PP) to unlock 5 perks:
+  - **Coin Master** (10 PP) → +10% coins
+  - **Pet Expert** (25 PP) → +20% pet earnings
+  - **Shop Discount** (40 PP) → -15% prices
+  - **Wave Bonus** (60 PP) → 2x wave coins
+  - **Ultimate VIP** (100 PP) → Permanent 2x VIP
+- Requirements: Shop Lvl 15 & 50k earned
+- Unlock exclusive Prestige Crown cosmetic
 
-[white[]]🏆 New Rewards:[[]]
-  • 3 New Achievements
-  • 6 Milestone Rewards
-  • 4 Pet Mission Types
-  • New Redeem Codes
+### 💤 Offline Earnings
+- Pets earn coins while you're away (up to 4 hours)
+- Welcome back dialog shows earnings
+- VIP multiplier applies (50% rate)
+- Prestige bonuses stack
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+### ✨ Cosmetics System
+- **4 Visual Effects**: Golden Aura, Blue Flames, Rainbow Trail, Lightning
+- **2 Badges**: Prestige Crown, VIP Star
+- Purely visual, no gameplay advantage
 
-[lime[]]💰 What's This All About?[[]]
+### 🔨 Changes
+- ❌ Removed Pet Evolution (too complex)
+- ❌ Removed Daily Login (buggy)
+- ✅ Pets back to simple names
+- ✅ All v1.3 features kept
 
-Earn coins by playing the game - killing enemies, completing waves, doing daily tasks. Spend those coins in the shop to buy resources, spawn units, or use special abilities. Now with full support for both Serpulo and Erekir!
+---
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+## 🎮 How to Access
 
-[cyan[]]🛒 The Shop Has:[[]]
+**PC:** Press **K** key or type **/shop** in chat  
+**Mobile:** Tap **SHOP [K]** button on right side
 
-[white[]]Serpulo Resources[[]] → Copper, Lead, Coal, Titanium, Thorium
-[white[]]Erekir Resources[[]] → Beryllium, Tungsten, Oxide, Carbide
-[white[]]Serpulo Units[[]] → Flare, Dagger, Mace squads
-[white[]]Erekir Units[[]] → Stell, Locus, Merui squads
-[white[]]Boosts[[]] → Skip waves or heal all buildings
-[white[]]Pets[[]] → 13 pets with evolution system
-[white[]]Pet Missions[[]] → Send pets for guaranteed rewards
-[white[]]Auction House[[]] → Bid on exclusive items
-[white[]]Converter[[]] → Exchange Serpulo ↔ Erekir resources
-[white[]]Crafting[[]] → Craft advanced materials
-[white[]]Favorites[[]] → Star your favorite items
+---
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+## 💰 Ways to Earn Coins
 
-[gold[]]⭐ VIP System[[]]
+### Playing the Game
+- **+1 coin** per enemy kill (× VIP × Prestige)
+- **+5 coins** per wave (× VIP × Prestige)
+- **Offline earnings** while away (up to 4 hours)
 
-The more you spend, the more VIP EXP you get. Level up your VIP status and earn coins way faster. At max level (VIP 5), you get 6x coins and 25% discount on everything!
+### Daily Activities
+- **Daily Quests** → 15-25 coins
+- **Daily Challenges** → 80-120 coins each (4 total)
+- **Daily Work** → 30-50 coins
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+### Long-Term
+- **Achievements** → 50-300 coins (9 total)
+- **Milestones** → 50-3000 coins (6 tiers)
+- **Pets** → 2-100 coins/min passive
+- **Pet Missions** → 40-450 coins per mission
+- **Auction House** → Bid on exclusive items
 
-[lime[]]🎮 How Do I Use This?[[]]
+### Bonuses
+- **Flash Sales** → Up to 50% off
+- **Redeem Codes** → Free coins
 
-[cyan[]]PC:[[]]
-1. Press K key anywhere
-2. Type /shop in chat
-3. Click Shop button in pause menu
+---
 
-[cyan[]]Mobile:[[]]
-1. Tap the SHOP [K] button on the right side of your screen
+## 🛒 Shop Categories
 
-Your coins, VIP level, and Shop level are always shown in the UI!
+### Resources
+- **Serpulo**: Copper, Lead, Coal, Titanium, Thorium
+- **Erekir**: Beryllium, Tungsten, Oxide, Carbide
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+### Units
+- **Serpulo**: Flare, Dagger, Mace squads
+- **Erekir**: Stell, Locus, Merui squads
 
-[cyan[]]📈 Ways to Earn Coins:[[]]
+### Features
+- **Boosts**: Skip waves, heal buildings
+- **Pets**: 13 pets (2-100 coins/min)
+- **Pet Missions**: 4 mission types
+- **Auction House**: Bid on exclusive items
+- **Converter**: Exchange Serpulo ↔ Erekir resources
+- **Crafting**: Craft Surge Alloy, Phase Fabric, Plastanium
+- **Cosmetics**: Visual effects and badges
+- **Prestige**: Reset for permanent power
+- **Favorites**: Star your favorite items
 
-[white[]]Playing the game:[[]]
-  • Each enemy killed = 1 coin (× VIP level)
-  • Each wave completed = 5 coins (× VIP level)
+---
 
-[white[]]Daily stuff:[[]]
-  • Daily Quests → 15-25 coins
-  • Daily Challenges → 80-120 coins each (4 challenges)
-  • Daily Work → 30-50 coins
-  • Daily Login → Up to 150 coins
+## 🐾 All 13 Pets
 
-[white[]]Long-term:[[]]
-  • Achievements → 50-300 coins
-  • Milestone Rewards → 50-3000 coins
-  • Pets → 2-100 coins per minute automatically
-  • Pet Missions → 40-450 coins per mission
-  • Auction House → Bid smart and win!
+| Pet | Income/Min | Planet | Unlock |
+|-----|-----------|--------|--------|
+| Cat | 2 | Serpulo | Wave 3 |
+| Dog | 3 | Serpulo | Wave 5 |
+| Eagle | 5 | Serpulo | Wave 10 |
+| Fox | 8 | Serpulo | Wave 15 |
+| Bear | 12 | Serpulo | Wave 20 |
+| Panther | 18 | Serpulo | Wave 25 |
+| Lion | 30 | Serpulo | Wave 35 |
+| Wolf | 25 | Serpulo | Wave 30 |
+| Phoenix | 40 | Serpulo | Wave 40 |
+| Cobra | 15 | Erekir | Wave 22 |
+| Hawk | 22 | Erekir | Wave 28 |
+| Tiger | 35 | Erekir | Wave 38 |
+| Dragon | 100 | Both | Wave 60 |
 
-[white[]]Secret stuff:[[]]
-  • Flash Sales → Up to 50% off random items
-  • Redeem Codes → Hidden codes for free coins!
+**Max Income: 315 coins/min!**  
+**Offline: Up to 4 hours!**
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[yellow[]]🐾 Pet System - All 13 Pets with Evolution:[[]]
+## 🚀 Pet Missions
 
-[cyan[]]Serpulo Pets:[[]]
-  [white[]]Cat[[]] → Lion (2 → 30 coins/min) [Wave 3]
-  [white[]]Dog[[]] → Wolf (3 → 25 coins/min) [Wave 5]
-  [white[]]Eagle[[]] → Phoenix (5 → 40 coins/min) [Wave 10]
-  [white[]]Fox[[]] → Kitsune (8 coins/min) [Wave 15]
-  [white[]]Bear[[]] → Grizzly (12 coins/min) [Wave 20]
-  [white[]]Panther[[]] → Jaguar (18 coins/min) [Wave 25]
+| Mission | Time | Reward | Needs |
+|---------|------|--------|-------|
+| Scout Mission | 2 min | 40 coins | 1 pet |
+| Resource Hunt | 4 min | 90 coins | 2 pets |
+| Treasure Search | 8 min | 200 coins | 3 pets |
+| Epic Journey | 15 min | 450 coins | 5 pets |
 
-[gold[]]Erekir Pets:[[]]
-  [white[]]Cobra[[]] → Python (15 coins/min) [Wave 22]
-  [white[]]Hawk[[]] → Falcon (22 coins/min) [Wave 28]
-  [white[]]Tiger[[]] (35 coins/min) [Wave 38]
+---
 
-[accent[]]Legendary:[[]]
-  [white[]]Dragon[[]] (100 coins/min) [Wave 60]
+## ⭐ VIP System
 
-[lime[]]Max passive income: 369 coins/min![[]]
+Spend coins to earn VIP EXP. Higher VIP levels grant:
+- **VIP 1**: 2x coins, 5% discount
+- **VIP 2**: 3x coins, 10% discount
+- **VIP 3**: 4x coins, 15% discount
+- **VIP 4**: 5x coins, 20% discount
+- **VIP 5**: 6x coins, 25% discount
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[cyan[]]🚀 Pet Missions - Guaranteed Rewards:[[]]
+## 📊 Current Content (v1.4)
 
-  [white[]]Scout Mission[[]] → 2 min, 40 coins (Need 1 pet)
-  [white[]]Resource Hunt[[]] → 4 min, 90 coins (Need 2 pets)
-  [white[]]Treasure Search[[]] → 8 min, 200 coins (Need 3 pets)
-  [white[]]Epic Journey[[]] → 15 min, 450 coins (Need 5 pets)
+- **9 Resources** (5 Serpulo + 4 Erekir)
+- **6 Unit types** (3 per planet)
+- **2 Boosts** (Skip wave, Heal)
+- **13 Pets** (2-100 coins/min)
+- **4 Pet Missions** (40-450 coins)
+- **4 Auction Items** (exclusive)
+- **3 Daily Quests** (15-25 coins)
+- **4 Daily Challenges** (80-120 coins)
+- **3 Work Activities** (30-50 coins)
+- **9 Achievements** (50-300 coins)
+- **6 Milestone Rewards** (50-3000 coins)
+- **12+ Redeem Codes** (free coins)
+- **Flash Sales** (up to 50% off)
+- **VIP System** (5 levels)
+- **Resource Converter** (6 recipes)
+- **Crafting System** (3 recipes)
+- **Favorites System**
+- **Bulk Buying** (10-30% bonus)
+- **🔐 Tamper-Resistant Saves**
+- **🌟 Prestige System** (5 perks)
+- **✨ Cosmetics** (6 items)
+- **💤 Offline Earnings** (4 hours max)
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[gold[]]🏛️ Auction House[[]]
+## 🎁 Free Redeem Codes
 
-Bid on exclusive high-tier items:
-  • Plastanium (50 units)
-  • Phase Fabric (30 units)
-  • Surge Alloy (20 units)
-  • Carbide (40 units) - Erekir exclusive!
+```
+FREEGOLD → 100 coins
+EPICWIN → 200 coins
+VIPACCESS → 300 coins
+MEGABONUS → 500 coins
+LEGENDARY → 1000 coins
+BLESSED2024 → 150 coins
+GIFT888 → 250 coins
+SamielXD15 → 15 coins
+NEWBIE10 → 10 coins
+START25 → 25 coins
+COINS50 → 50 coins
+EREKIR100 → 100 coins
+SERPULO50 → 50 coins
+OFFLINE100 → 100 coins
+PRESTIGE50 → 50 coins
+COSMETIC200 → 200 coins
+```
 
-Place bids or use "Buy Now" to get items instantly!
+Redeem in shop under "Code" button!
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[cyan[]]🔄 Resource Converter:[[]]
+## 📝 Changelog
 
-Exchange resources between planets at fixed rates:
-  • Copper ↔ Beryllium (2:1)
-  • Lead ↔ Tungsten (3:1)
-  • Titanium ↔ Oxide (4:1)
+### v1.4 (Current)
+- ✨ Tamper-resistant save system with hash validation
+- ✨ Prestige system with 5 permanent perks
+- ✨ Offline earnings (up to 4 hours)
+- ✨ Cosmetics system (6 items)
+- ❌ Removed pet evolution system
+- ❌ Removed daily login (buggy)
+- ⚠️ Progress reset required
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+### v1.3
+- ✨ Full Erekir support
+- ✨ PC compatibility (K key, /shop command)
+- ✨ Pet system overhaul (13 pets)
+- ✨ Pet missions (4 types)
+- ✨ Daily challenges (4 types)
+- ✨ Milestone rewards (6 tiers)
+- ✨ Resource converter (6 recipes)
+- ✨ Crafting system (3 recipes)
 
-[gold[]]⚒️ Crafting System:[[]]
+### v1.2
+- ✨ Custom sound effects
+- ✨ 3 new pets
+- ✨ Auction house system
+- 🐛 Bug fixes
 
-Craft advanced materials:
-  • Surge Alloy (100 Copper + 100 Lead + 50 Titanium + 200 coins)
-  • Phase Fabric (50 Thorium + 80 Titanium + 150 coins)
-  • Plastanium (60 Titanium + 40 Coal + 100 coins)
+### v1.1
+- ✨ Favorite system
+- ✨ Bulk discounts
+- ✨ Resource cooldowns
+- ✨ 3 new resources
+- 🐛 Bug fixes
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+### v1.0
+- Initial release
 
-[white[]]🔒 The Lock System:[[]]
+---
 
-Items unlock based on:
-  • Waves completed
-  • Shop level
+## ⚠️ Known Issues
 
-Locked items show exactly what you need to unlock them!
-
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
-
-[cyan[]]💡 Pro Tips:[[]]
-
-• Do daily quests and challenges for easy coins
-• Complete pet missions for guaranteed rewards
-• Save up for pets - they pay for themselves!
-• With all 13 pets, earn 369 coins/min passively
-• Evolve your pets for even better earnings
-• Use the Resource Converter to get planet-specific items
-• Craft advanced materials when you have extra resources
-• Check the auction house regularly
-• Use bulk buying for bonus items!
-• Press K on PC for instant shop access!
-
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
-
-[red[]]⚠️ Known Issues:[[]]
-
-• Work system might not track progress sometimes (just restart it)
-• Spam-clicking can cause weird behavior
-• UI might look odd on very small screens
-• Pet missions may not update immediately
-• Sound effects need sound files in sounds/ folder
-• daily login not working properly
+- Work system may not track progress (restart it)
+- Spam-clicking can cause UI glitches
+- UI odd on very small screens
+- Pet missions may not update immediately
+- Sound effects need files in sounds/ folder
 
 Nothing game-breaking!
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[lime[]]📊 Current Content (v1.3):[[]]
+## 🔊 Sound Files Needed
 
-9 Resources (5 Serpulo + 4 Erekir) • 6 Unit types • 2 Boosts
-13 Pets with Evolution • 4 Pet Missions • 4 Auction Items
-3 Daily Quests • 4 Daily Challenges • 3 Work Activities
-10 Login Rewards • 6 Achievements • 6 Milestone Rewards
-15+ Redeem Codes • Flash Sales • VIP Levels 1-5
-Auction House • Favorites • Bulk Buying • Resource Converter
-Crafting System • PC Keybind (K) • Chat Command (/shop)
-Advanced Statistics • 3 Custom Sound Effects
+Place in `sounds/` folder:
+- `pop.ogg` - UI clicks
+- `switch.ogg` - Menu transitions
+- `coins.ogg` - Coin sounds
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+Mod works without them!
 
-[cyan[]]🔊 Sound Files Needed:[[]]
+---
 
-Place these in your mod's sounds/ folder:
-  • pop.ogg - UI clicks
-  • switch.ogg - Menu transitions
-  • coins.ogg - Coin sounds
+## 💡 Pro Tips
 
-Mod works without them but sounds are better!
+- Do daily quests and challenges for easy coins
+- Save up for pets - they pay for themselves!
+- All 13 pets = 315 coins/min passive income
+- Pets earn offline (up to 4 hours)
+- Use Resource Converter for cross-planet trading
+- Check auction house regularly
+- Use bulk buying for bonuses (10-30%)
+- Press K on PC for instant shop access
+- Prestige when ready for permanent bonuses
+- Don't edit save files - they're protected!
 
-[accent[]]━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[[]]
+---
 
-[white[]]That's it! Press K (PC) or tap SHOP (Mobile) to start building your economy![[]]
+## 📥 Installation
 
-[gray[]]Have fun, Hope you enjoy my mod! 💰[[]]
+1. Download latest `.zip` from [Releases](https://github.com/SamielXD/ShopSystemMod/releases)
+2. Place in Mindustry mods folder
+3. Restart Mindustry
+4. Press **K** or tap **SHOP** to start!
 
-[white[]]- SamielXD[[]]
-  '''
+---
 
-version: "1.3"
+## 🐛 Report Bugs
 
-minGameVersion: 154.3
+Found a bug? [Open an Issue](https://github.com/SamielXD/ShopSystemMod/issues) with:
+- Description of the bug
+- Steps to reproduce
+- Screenshots (if applicable)
+- Your platform (PC/Mobile)
 
-dependencies: []
+---
 
-main: "scripts/main.js"
+## 💬 Contact
 
-repo: "SamielXD/ShopSystemMod"
+- **Discord**: samielkun
+- **Author**: SamielXD
+- **GitHub**: [SamielXD](https://github.com/SamielXD)
+
+---
+
+## ⭐ Support the Mod
+
+If you enjoy the mod, leaving a star ⭐ on the repo helps a lot and keeps development going. Thanks for checking it out, and have fun building your in-game economy on both Serpulo and Erekir!
+
+---
+
+## 🎉 Goals
+
+- Goal: stars 9/10
+- Goal: downloads 39/45
+- Goal: releases 4/5
+
+---
+
+## 📜 License
+
+This mod is free to use and modify for personal use. Please credit the original author if you share modified versions.
+
+---
+
+**Have fun! Hope you enjoy the mod! 💰**  
+*- SamielXD*
